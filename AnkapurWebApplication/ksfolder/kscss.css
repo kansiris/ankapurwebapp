@@ -1,0 +1,369 @@
+﻿body {
+
+    .forgot-popup{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+	display: none;
+	z-index: 3;}
+.forgot-popup > .enter-number{
+	min-width: 350px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);}
+.forgot-popup > .enter-number > i{
+	position: absolute;
+    top: -8px;
+    right: -9px;
+    cursor: pointer;
+    background: rgba(49,53,128,1);
+    padding: 5px 6px;
+    color: #fff;
+    border-radius: 50%;
+    transition: all 1s;}
+.forgot-popup > .enter-number > i:hover{
+	transform: rotate(360deg);}
+.forgot-popup > .enter-number > .form-group{
+	position: relative;}
+.forgot-popup > .enter-number > .form-group > text{
+	position: absolute;
+    top: 30px;
+    left: 10px;}
+.forgot-popup > .enter-number > .form-group > text + input[type='text']{
+	padding-left: 41px;}
+.forgot-popup > .enter-number > .form-group:last-of-type{
+	margin-bottom: 0;}
+.forgot-popup > .enter-number button{
+	background: rgba(49,53,128,1);
+    border: none;
+    border-radius: 5px;}
+.forgot-popup > .enter-number button.btn-primary:active:hover{
+	background: rgba(49,53,128,.8);}
+}
+
+.profile_details:nth-child(3n) {
+    clear: both;
+}
+
+.profile_details .profile_view {
+    display: inline-block;
+    padding: 10px 0 0;
+    background: #fff;
+}
+
+    .profile_details .profile_view .divider {
+        border-top: 1px solid #e5e5e5;
+        padding-top: 5px;
+        margin-top: 5px;
+    }
+
+    .profile_details .profile_view .ratings {
+        margin-bottom: 0;
+    }
+
+    .profile_details .profile_view .bottom {
+        background: #F2F5F7;
+        padding: 9px 0;
+        border-top: 1px solid #E6E9ED;
+    }
+
+    .profile_details .profile_view .left {
+        margin-top: 20px;
+    }
+
+        .profile_details .profile_view .left p {
+            margin-bottom: 3px;
+        }
+
+    .profile_details .profile_view .right {
+        margin-top: 0px;
+        padding: 10px;
+    }
+
+    .profile_details .profile_view .img-circle {
+        border: 1px solid #E6E9ED;
+        padding: 2px;
+    }
+
+    .profile_details .profile_view h2 {
+        margin: 5px 0;
+    }
+
+    .profile_details .profile_view .ratings {
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .profile_details .profile_view .brief {
+
+        margin: 0;
+        font-weight: 300;
+    }
+
+.profile_details .profile_left {
+    background: white;
+}
+
+a.user-profile {
+    color: #5E6974 !important;
+}
+
+.user-profile img {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+ul.top_profiles {
+    height: 330px;
+    width: 100%;
+}
+
+    ul.top_profiles li {
+        margin: 0;
+        padding: 3px 5px;
+    }
+
+        ul.top_profiles li:nth-child(odd) {
+            background-color: #eee;
+        }
+
+.media .profile_thumb {
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+    margin: 5px 10px 5px 0;
+    border-radius: 50%;
+    padding: 9px 12px;
+}
+
+    .media .profile_thumb i {
+        font-size: 30px;
+    }
+
+ul.widget_profile_box {
+    width: 100%;
+    height: 42px;
+    padding: 3px;
+    background: #ececec;
+    margin-top: 40px;
+    margin-left: 1px;
+}
+
+    ul.widget_profile_box li:first-child {
+        width: 25%;
+        float: left;
+    }
+
+        ul.widget_profile_box li:first-child a {
+            float: left;
+        }
+
+    ul.widget_profile_box li:last-child {
+        width: 25%;
+        float: right;
+    }
+
+        ul.widget_profile_box li:last-child a {
+            float: right;
+        }
+
+    ul.widget_profile_box li a {
+        font-size: 22px;
+        text-align: center;
+        width: 35px;
+        height: 35px;
+        border: 1px solid rgba(52,73,94,0.44);
+        display: block;
+        border-radius: 50%;
+        padding: 0px;
+    }
+
+        ul.widget_profile_box li a:hover {
+            color: #0b9144 !important;
+            border: 1px solid #26b99a;
+        }
+
+    ul.widget_profile_box li .profile_img {
+        width: 85px;
+        height: 85px;
+        margin: 0;
+        margin-top: -28px;
+    }
+.profile_title {
+    background: #F5F7FA;
+    border: 0;
+    padding: 7px 0;
+    display: -ms-flexbox;
+    display: flex;
+}
+.profile-part {
+    margin: 20px 0;
+}
+/*======================== User Circle ==================*/
+.navbar-right .top-button {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+    .navbar-right .top-button > span {
+        font-size: 20px;
+        font-weight: bold;
+        top: 3px;
+        left: 30%;
+    }
+/*======================== User Circle ==================*/
+.top-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    float: left;
+    /*left: -50px;
+    margin-left: 50%;*/
+    /*background: #f29c13;*/
+}
+
+    .top-button > input[type=file] {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        /*background: #f29c13;*/
+        position: absolute;
+        top: 0;
+        left: 0px;
+        opacity: 0;
+    }
+
+    .top-button > span {
+        position: absolute;
+        top: 15%;
+        left: 25%;
+        font-size: 80px;
+        color: #fff;
+        text-align: center;
+    }
+
+.profile-part > div > p {
+    float: left;
+}
+
+    .profile-part > div > p:first-of-type {
+        line-height: 100px;
+        margin-left: 20px;
+        font-size: 30px;
+        color: #333;
+    }
+
+    .profile-part > div > p:last-of-type {
+        position: absolute;
+        left: 20%;
+        bottom: 10px;
+    }
+
+.profile-part > div:last-of-type {
+    margin-top: 30px;
+}
+
+    .profile-part > div:last-of-type > a {
+        float: right;
+        background: #0483c6;
+        border-radius: 5px;
+        color: #fff;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+        .profile-part > div:last-of-type > a > i {
+            margin-right: 10px;
+        }
+
+.profile-part + div {
+    position: relative;
+}
+
+    .profile-part + div > text {
+        position: absolute;
+        left: 130px;
+        bottom: 0;
+    }
+li.selected > .row div:nth-of-type(2).profilepic input[type='file'] {
+    display: block;
+    margin: 0 auto;
+}
+.top-section .profile{
+	float: right;
+	margin-top: 20px;
+	cursor: pointer;
+	position: relative;
+	min-width: 150px;}
+.top-section .profile > img{
+	width: 20px;}
+.top-section .profile > span{
+	font-size: 14px;
+	font-weight: bold;
+	color: #999;
+	margin-left: 5px;
+	min-width: 80px;
+	display: inline-block;}
+.top-section .profile > i{
+	margin-left: 2px;
+	font-size: 12px;
+	color: #999;}
+.top-section .profile > ul{
+	display: none;
+	background: #fff;
+	box-shadow: 0px 0px 3px 1px #ccc;
+	border: 1px solid #ccc;
+	border-top: none;
+	padding-left: 0;
+	position: absolute;
+	top: 26px;
+	right: 0px;
+	width: 86%;}
+/*.top-section .profile:hover > ul{
+	display: block;}*/
+.top-section .profile > ul > li{
+	color: #999;
+	list-style-type: none;
+	padding: 5px 10px;}
+.top-section .profile > ul > li > i{
+	margin-right: 3px;}
+
+/*======================= Profile Page ===================*/
+.profile-page{
+	position: relative;}
+.profile-page img{
+	width: 100px;
+	margin: 15px auto;
+	display: block;}
+.profile-page .profile .form-group{
+	position: absolute;
+    top: 37px;
+    left: 46%;
+    transform: translate(-25%,-25%);
+    margin-bottom: 0;}
+.profile-page .form-group > input[type='file']{
+	width: 100px;
+	height: 100px;
+	opacity: 0;}
+.profile-page .fa-upload{
+	position: absolute;}
+.profile-page .btn-default{
+	margin-bottom: 20px;
+	background: #f5c53b;
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;}
+

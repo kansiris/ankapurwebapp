@@ -1,0 +1,50 @@
+﻿@if (Model.Count != 0)
+{
+foreach (var item in Model)
+{
+    <div class="well">
+        <i class="fa fa-times remove" aria-hidden="true"></i>
+        <div class="image">
+            <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Image 1">
+        </div>
+        <div class="img-title">
+            <a href="#" class="product-name">@item.ProductName</a>
+            <input type="hidden" value="@item.ProductId" id="pid" />
+        </div>
+        <div class="description">
+            <p>@item.LongDescription</p>
+            <a href="#">More</a>
+        </div>
+        <div class="empty"></div>
+        <div class="rate-add">
+            <div class="product-price">
+                Rs <span>@item.Price</span>
+            </div>
+            <div class="product-price-total">
+                <p>Total</p> Rs <span>@(item.Price1 * item.Quantity1)</span>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 quantity">
+                    <div class="input-group spinner">
+                        <label>Qty</label>
+                        <input type="text" class="form-control" value="@item.Quantity1" id="cartqty">
+                        <div class="input-group-btn-vertical">
+                            <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                            <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 add-to-cart">
+                    <button class="btn btn-primary" type="button">Add <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+}
+else
+{
+    <p> no records avialable</p>
+}
+
+

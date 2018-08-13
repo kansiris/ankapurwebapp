@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\venkat\Desktop\Ankapur wo publish 27917</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Ankapur.repository.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Ankapur.service.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Ankapur.Utility.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/AnkapurWebApplication.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationBlocks.Data.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Administration.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="build/css/custom.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="build/js/custom.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="build/js/custom.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/3.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/4.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/ankapur_logo.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/ankapur_logo1.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/ankapur_logo_1080.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/ornate_restaurant_menu_background_art_5777422.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Thank you.jpg">
+      <publishTime>11/09/2017 16:48:16</publishTime>
+    </File>
+    <File Include="Images/Thank-You-Chicken_Animated.gif">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/TQ2.png">
+      <publishTime>11/09/2017 16:54:50</publishTime>
+    </File>
+    <File Include="landingpage/CSS1/bootstrap.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="landingpage/CSS1/bootstrap.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="landingpage/CSS1/full-slider.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="landingpage/js2/bootstrap.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="landingpage/js2/bootstrap.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="landingpage/js2/jquery.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Models/Registration.edmx.diagram">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/css/bootstrap.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/css/font-awesome.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/css/jquery.datetimepicker.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/css/latofonts.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/fontawesome-webfont.eot">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/fontawesome-webfont.svg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/fontawesome-webfont.ttf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/fontawesome-webfont.woff">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/fontawesome-webfont.woff2">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/FontAwesome.otf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/ankapur_logo.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/banner-img.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/banner-img1.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/bg1.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/bodybg.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/bodybg1.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/chicken_fry.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/fish_pulusu.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/icon.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/label.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/prawns_curry.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/images/usericn.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/js/bootstrap.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/js/jquery.datetimepicker.full.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="production/js/jquery.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Reg/custreg.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/custom.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/custom.min.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/font-awesome.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/fontawesome-webfont.eot">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/fontawesome-webfont.svg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/fontawesome-webfont.ttf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/fontawesome-webfont.woff">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/fontawesome-webfont.woff2">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/FontAwesome.otf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/franchises.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/main.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/modernizr.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/Registration.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/reset.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/style.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.GetbalanceResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.GetDeliveryReportResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.getInboxResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.MarkRead_inboxResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.Mark_UnRead_inboxResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendBinarySMSResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendFlashSMSResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendLOGOResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.sendMultiSMSResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendPictureSMSResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendRingToneResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendTextSMSResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendUnicodeSMSResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Service References/SMSCAPI/AnkapurWebApplication.SMSCAPI.SendWapPushResponse.datasource">
+      <publishTime>11/09/2017 17:22:19</publishTime>
+    </File>
+    <File Include="Views/Account/ConfirmEmail.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPassword.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPasswordConfirmation.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPassword.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPasswordConfirmation.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/SendCode.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/VerifyCode.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/CustomerDetails/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/GetRestaurant/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Registration.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Manage/AddPhoneNumber.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Manage/ChangePassword.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Manage/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Manage/ManageLogins.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Manage/SetPassword.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/NewOrder/addtocart.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/NewOrder/allproducts.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/NewOrder/Index.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/NewOrder/orderview.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/NewOrder/thankyoupage.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/Lockout.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,843 @@
+﻿
+@model AnkapurWebApplication.Models.TblNewCustomer
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="~/production/images/favicon.png">
+    <link href="~/production/css/alertify.css" rel="stylesheet" />
+    <style>
+        .row {
+            margin-right: -7px;
+            margin-left: -7px;
+        }
+
+        .container-fluid {
+            padding-right: 113px;
+            padding-left: 13px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .jumbotron {
+            padding-top: 30px;
+            padding-bottom: 48px;
+            margin-bottom: 30px;
+            color: #fff;
+            background-color: #3a0505;
+            font-size: 1px;
+        }
+
+            .jumbotron p {
+                margin-bottom: 15px;
+                font-size: 16px;
+                font-weight: 200px;
+            }
+
+        .container .jumbotron, .container-fluid .jumbotron {
+            padding-right: 10px;
+            padding-left: 15px;
+            border-radius: 6px;
+            border-top-left-radius: 35px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 35px;
+            border-bottom-left-radius: 35px;
+        }
+
+        hr {
+            display: block;
+            height: 2px;
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 1em 0;
+            padding: 0;
+        }
+
+        .btn {
+            border: 8px 8px;
+            color: #ff1515;
+            padding: 12px 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    @*<div id="preloader">
+        <div class="clear-loading loading-effect"><img src="~/ksfolder/images/loading.gif" width="100" alt=""></div>
+    </div>*@
+    <!-- Start Navigation -->
+
+@using AnkapurWebApplication.Content;
+@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+{
+
+    <nav class="navbar navbar-default navbar-sticky bootsnav">
+        <!-- Start Top Search -->
+        @*<div class="top-search">
+                <div class="container">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>*@
+        <!-- End Top Search -->
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    @*<li class="search"><a href="#"><i class="icon-magnifier icons"></i></a></li>*@
+                    <li class="side-menu"><a href="#" >@ViewBag.Name</a></li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="fa fa-bars"></i> </button>
+                <a class="navbar-brand" href="index-default.html"><img src="~/ksfolder/images/logo-black.png" class="logo logo-scrolled" alt=""> </a>
+            </div>
+            <!-- End Header Navigation -->
+            <!-- Megamenu -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="active dropdown">
+                        <a href="index.html" data-toggle="dropdown">Home</a>
+
+                    </li>
+                    <li class="dropdown open">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Cart (<i class="fa fa-shopping-cart"></i> )</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="jumbotron">
+                                    <p> PRAWNS VEPUDU  &emsp; &emsp;₹ 150</p>
+                                    <hr><center><p>Total ₹ 150</p></center>
+
+                                    @*<li><p>Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>*@
+                                    <hr>
+                                    <a href="cart.html" class="btn btn-default btn-primary dark-border white-text btn-radius btn-xs fill-red mt-2"><b>CHECKOUT</b></a>
+                            </li>
+                        </ul>
+                    </li>
+                    @*<li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Login/Signup</a>
+                        </li>*@
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- Start Side Menu -->
+        <div class="side dark-bg">
+            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+           
+            <div class="widget">
+          
+                <div class="profile">
+                    <img src="~/production/images/usericn.png" alt="Profile Icon">
+                    <span id="txtcustname"></span>
+                    
+                    <ul>
+
+                        <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                        <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                        <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+
+
+                    </ul>
+                    @*<button class="text-center" type="button" id="btnsignout" onclick="@("window.location.href='" +Url.Action("logoff", "Home") + "'");">Sign Out</button>*@
+                </div>
+
+            </div>
+        </div>
+        <!-- End Side Menu -->
+    </nav>
+    }
+    else
+    {
+
+    <nav class="navbar navbar-default navbar-sticky bootsnav">
+        <!-- Start Top Search -->
+        @*<div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>*@
+        <!-- End Top Search -->
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    @*<li class="search"><a href="#"><i class="icon-magnifier icons"></i></a></li>*@
+                    <li class="side-menu"><a href="#"><b>Login</b></a></li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="fa fa-bars"></i> </button>
+                <a class="navbar-brand" href="index-default.html"><img src="~/ksfolder/images/logo-black.png" class="logo logo-scrolled" alt=""> </a>
+            </div>
+            <!-- End Header Navigation -->
+            <!-- Megamenu -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="active dropdown">
+                        <a href="index.html" data-toggle="dropdown">Home</a>
+
+                    </li>
+
+
+                    <li class="dropdown open">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Cart (<i class="fa fa-shopping-cart"><span id="cartquantity"> 0</span></i> ) </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="col-xs-12 col-sm-0 col-md-3 right-side-bar">
+                                    <div class="row checkout">
+
+                                        <div class="col-xs-12 col-md-12 check-title">
+
+                                            <div class="row">
+
+                                                @*<div class="col-xs-5 col-md-5 title">Your Order</div>
+    <div class="col-xs-2 col-md-2 cart-icn">
+        <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+        <span id="cartquantity">0</span>
+    </div>*@
+                                                <hr>
+                                                <div class="col-xs-5 col-md-5 cart-total">
+                                                  <p>  Total Rs:<span id="totalamt">000</span></p>
+                                                </div>
+
+                                            @*</div>*@
+
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="added-products" id="adpr">
+
+                                            </div>
+                                            @*<div class="row">
+                                                <h4>Select Date and Time</h4>
+                                                <input type="text" value="" id="datetimepicker" placeholder="Delivery Date Time" />
+                                            </div>*@
+                                        </div>
+                                        <div class="col-xs-12 generateorderbutton" id="dsb">
+                                            <button class="btn btn-default btn-primary dark-border white-text btn-radius btn-xs fill-red mt-2" type="button" id="btnplaceorder" value="placeorder" onclick="saveorder(this.value)">CHECKOUT</button>
+
+                                        </div>
+                                        @*<div id="upb">
+                                            <button class="btn btn-primary" type="button" id="btnupdateorder" value="updateorder" onclick="updateorder(this.value)">Update Order</button>
+                                        </div>*@
+                                    </div>
+                                </div>
+                                    </div>
+                            @*<p> PRAWNS VEPUDU  &emsp; &emsp;₹ 150</p>
+                            <hr><center><p>Total ₹ 150</p></center></li>
+
+                            <hr>
+                            <a href="cart.html" class="btn btn-default btn-primary dark-border white-text btn-radius btn-xs fill-red mt-2"><b>CHECKOUT</b></a>*@
+
+                            @*<li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>*@
+                        </ul>
+                    </li>
+
+                    @*<li class="dropdown">
+                        <a class="top arrow1"><i class="fa fa-shopping-cart"></i></a>
+                    </li>*@
+                    @*<li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Login/Signup</a>
+                    </li>*@
+                        
+                    </ul>
+
+</div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- Start Side Menu -->
+        <div class="side dark-bg">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                @*<div class="widget">
+                    <p class="text-center my-3"><img src="~/ksfolder/images/logo-white.png" class="logo" alt="" /></p>
+                    <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="widget">
+                    <h6 class="text-uppercase">OFFICE 01</h6>
+                    <ul class="list-unstyled address">
+                        <li><i class="lnr lnr-map-marker"></i><span>387 Madison Ave, New York, NY 10118</span></li>
+                        <li><i class="lnr lnr-envelope"></i><span>support@yourname.com</span></li>
+                        <li><i class="icon-phone"></i><span>(+91) 123-456-7890</span></li>
+                    </ul>
+                </div>*@
+                <div class="widget">
+                    @*<div class="social-icons animated color">
+                        <ul class="clearfix">
+                            <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="social-vimeo"><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                            <li class="social-youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li class="social-instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>*@
+                    <div class="login p-5">
+
+
+                        <div class="row mx-0 margin">
+                            <h4>
+                                Login
+                                <div class="blackBorder"></div>
+                            </h4>
+                        </div>
+                        <div class="row mx-0 fontSize-18 my-2">
+                            <p class="mb-0">Are you a new user ? <span class="themeColor cursorPointer registerBtn">Register</span></p>
+                        </div>
+                      @using (Html.BeginForm("Login", "ksreg", FormMethod.Post))
+                      {
+                        @Html.AntiForgeryToken()
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    @*<input type="text" class="form-control" placeholder="Phone number" name="Item1.UserName" id="Item1_UserName" autofocus="" required="">*@
+                                    @Html.TextBoxFor(model => model.CustPhoneNumber, new { @class = "form-control", @id = "txtcm", @placeholder = "Phone Number" })
+                                </div>
+                            </div>
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "txtpassword1", @placeholder = "Password" })
+
+
+                                    @*<input type="password" class="form-control" placeholder="Password" name="Item1.Password" id="Item1_Password" required="">*@
+                                </div>
+                            </div>
+                            <div class="row mx-0 align-items-center">
+                                <button type="submit" class="btn btn-default btn-primary dark-border white-text btn-radius btn-xs fill-red mt-2" value="Login" name="command" onclick="testlogin()">Login</button>
+
+
+                                <span class="themeColor ml-3 fontSize-18 forgotPasswordBtn"> Forgot Password</span>
+                            </div>
+                      }
+
+
+                    </div>
+
+                    <div class="register p-5" style="display: none;">
+                        <div class="row mx-0 margin">
+                            <h4>
+                                Register
+                                <div class="blackBorder"></div>
+                            </h4>
+                        </div>
+                        <div class="row mx-0 fontSize-18 my-2">
+                            <p class="mb-0">Already have an Account ? <span class="themeColor cursorPointer loginBtn">Login</span></p>
+                        </div>
+                      
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    <input id="txtname" type="text" class="form-control" name="CustomerName" placeholder="Name" maxlength="20">
+
+                                    @*<input type="text" class="form-control" placeholder="Name" name="Item2.FirstName" id="Item2_FirstName" required="">*@
+                                </div>
+                            </div>
+                        
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    <input type="tel" pattern="^\d{10}$" id="txtphone" class="form-control" placeholder="Mobile Number(format: xxxxxxxxxx)"  required="">
+
+                                </div>
+                            </div>
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    @*<input type="password" class="form-control" placeholder="Password" name="Item1.Password" minlength="5" id="Item1_Password" required="">*@
+                                    <input id="password-1" type="password" class="form-control" name="password" placeholder="Password" maxlength="10">
+
+                                </div>
+                            </div>
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    @*<input type="password" class="form-control" placeholder="Confirm Password" name="Item1.Password" minlength="5" id="Item1_Password" required="">*@
+                                    <input id="txtconpassword" type="password" class="form-control" name="conformpassword" placeholder="Confirm Password" maxlength="10">
+
+                                </div>
+                            </div>
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    @*<input type="email" class="form-control" placeholder="Address" name="Item1.UserName" id="Item1_UserName" required="">*@
+                                    <input id="txtdeladdress" type="text" class="form-control" name="Address" placeholder="Address" maxlength="50">
+
+                                </div>
+                            </div>
+                            <div class="row mx-0 align-items-center">
+                                <button type="submit" class="btn btn-default btn-primary dark-border white-text btn-radius btn-xs fill-red mt-2"  value="registercustomer" onclick="savecustomer(this.value)"  name="command">Register</button>
+                            </div>
+                       
+                    </div>
+
+                    <div class="forgotPassword p-5" style="display: none;">
+                        <div class="row mx-0 margin">
+                            <h4>
+                                Forgot Password
+                                <div class="blackBorder"></div>
+                            </h4>
+                        </div>
+                      
+                            <div class="row mx-0 my-2">
+                                <div class="form-group w-100">
+                                    <input ttype="text" id="txtfpw" class="form-control" placeholder="Phone number"  required="">
+                                </div>
+                            </div>
+                            <div class="row mx-0 align-items-center">
+                                <button type="submit" class="btn btn-default btn-primary dark-border white-text btn-radius btn-xs fill-red mt-2"  value="forgotpw" onclick="forgotpw(this.value)">Submit</button>
+                                <span class="themeColor ml-3 fontSize-18 loginBtn"> Login</span>
+                            </div>
+                    </div>
+
+
+                </div>
+            </div>
+        <!-- End Side Menu -->
+    </nav>
+
+}
+
+
+    <div class="container-fluid forgot-popup" id="otpopup">
+        <div class="enter-number">
+            <div class="form-group">
+                <label>OTP</label>
+                <text></text>
+                <input type="text" id="txtotp" class="form-control" placeholder="" style="padding-left: 10px;">
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="button" id="btnotp"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validate OTP</button>
+            </div>
+            @*<i class="fa fa-times" aria-hidden="true"></i>*@
+        </div>
+    </div>
+    @RenderBody()
+</body>
+</html>
+<script src="~/production/js/alertify.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        document.getElementById('txtcustname').value = 'Name';
+        var fname = $("#fname").val();
+        $("#txtcustname").html(fname);
+    });
+
+    var regClick = $(".registerBtn"), loginClick = $(".loginBtn"), forgotClick = $(".forgotPasswordBtn"),
+           loginBlock = $(".login"), regBlock = $(".register"), forgotBlock = $(".forgotPassword");
+    $(regClick).click(function () {
+        $(".login").css("display", "none");
+        $(".register").css("display", "none");
+        $(regBlock).css("display", "block");
+    });
+
+    $(loginClick).click(function () {
+        $(forgotBlock).css("display", "none");
+        $(".register").css("display", "none");
+        $(loginBlock).css("display", "block");
+    });
+
+    $(forgotClick).click(function () {
+        $(".login").css("display", "none");
+        $(".register").css("display", "none");
+        $(forgotBlock).css("display", "block");
+    });
+    function savecustomer(clickedvalue) {
+        var CustomerPhoneNumber = $("#txtphone").val();
+        var CustomerName = $("#txtname").val();
+        var Password = $("#password-1").val();
+        var Address = $("#txtdeladdress").val();
+        var Email = $("#txtemail").val();
+        var conpw = $("#txtconpassword").val();
+        var emailReg = /^([\w-\.]+\u0040([\w-]+\.)+[\w-]{2,4})?$/;
+        var phonepattern = /^[0-9]{10}$/;
+        var passwordpattern = /^[a-z0-9]+$/i;
+        var emailaddressVal = $("#txtemail").val();
+        if (CustomerPhoneNumber == '') {
+            alertify.alert("Please Enter PhoneNumber");
+            $("#txtphone").focus();
+        }
+        else if (!phonepattern.test(CustomerPhoneNumber)) {
+            alertify.alert("Please Enter valid 10 digit Phonenumber");
+            $("#txtphone").focus();
+        }
+        else if (CustomerName == '') {
+            alertify.alert("Please Enter Name");
+            $("#txtname").focus();
+        }
+        else if (CustomerName.length < 5) {
+            alertify.alert("Name must be 5 characters");
+            $("#txtname").focus();
+        }
+        else if (Password == '') {
+            alertify.alert("Please Enter Password");
+            $("#txtpassword").focus();
+        }
+        else if (Password.length < 5) {
+            alertify.alertt("Password length must be 5 characters");
+            $("#txtpassword").focus();
+            $("#txtpassword").alphanum();
+        }
+        else if (!passwordpattern.test(Password)) {
+            alertify.alert("Please Enter valid 10 digit Phonenumber");
+            $("#txtphone").focus();
+        }
+        else if (conpw == '') {
+            alertify.alert("Please Enter Confirm Password");
+            $("#txtconpassword").focus();
+        }
+        else if (Password != conpw) {
+            alertify.alert("Passwords do not match.");
+            $("#txtconpassword").focus();
+        }
+        else if (Address == '') {
+            alertify.alert("Please Enter Address");
+            $("#txtdeladdress").focus();
+        }
+        else if (Address.length < 10) {
+            alertify.alert("Address must be 10 characters");
+            $("#txtdeladdress").focus();
+        }
+           
+        else {
+            if (clickedvalue == 'registercustomer') {
+                $.ajax({
+                    url: '/ksreg/Registrationpage',//?CustomerPhoneNumber=' + CustomerPhoneNumber + '&CustomerName=' + CustomerName + '&Password=' + Password + '&Address=' + Address + '&Email=' + Email,
+                    type: 'POST',
+                    data: JSON.stringify({ CustomerPhoneNumber: CustomerPhoneNumber, CustomerName: CustomerName, Password: Password, Address: Address, Email: Email }),
+                    //data: JSON.stringify({ CustomerPhoneNumber, CustomerName, Password, Address, Email }),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function data() {
+                        //if (data == "success") {
+                        //    alert("some error occured");
+                        //    //window.location.href = '/NewOrder/orderview'
+                        //}
+                        //else {
+                        //    alert("Customer Registered successfully");
+                        //    $("#txtphone").val('');
+                        //    $("#txtname").val('');
+                        //    $("#txtpassword").val('');
+                        //    $("#txtdeladdress").val('');
+                        //    $("#txtemail").val('');
+                        //    window.location.reload();
+                        //}
+                        if (data == "unique") {
+                            alertify.alert("Registration fails");
+                        }
+                        else if (data == "Failed") {
+                            alertify.alert("Restaurant is closed at the moment");
+                            window.location.reload();
+                        }
+                        else {
+                            //alert("Customer Registered successfully");
+                            //$("body").overhang({
+                            //    type: "success",
+                            //    message: "Customer Registered successfully!",
+                            //    overlay: true,
+                            //   // closeConfirm: true,
+                            //    duration: 5,
+                            //});
+                            // $("#txtphone").val('');
+                            $("#txtname").val('');
+                            $("#txtpassword").val('');
+                            $("#txtdeladdress").val('');
+                            $("#txtemail").val('');
+                            // window.location.reload();
+                            $("#otpopup").css("display", "block");
+                            $("#txtotp").focus();
+                        }
+                    },
+                    error: function (data) {
+                        alertify.alert("Failed.");
+                        
+                    }
+                });
+            }
+        }
+    }
+
+    //<!------- Forgot Password ----------->
+    $("#forgotpassword").click(function () {
+        $(".forgot-popup").css("display", "block");
+        $("#otpopup").css("display", "none");
+    });
+    $(".enter-number > i.fa-times").click(function () {
+        $(this).parents(".forgot-popup").css("display", "none");
+    });
+
+
+    function savecustomer(clickedvalue) {
+        var CustomerPhoneNumber = $("#txtphone").val();
+        var CustomerName = $("#txtname").val();
+        var Password = $("#password-1").val();
+        var Address = $("#txtdeladdress").val();
+        var Email = $("#txtemail").val();
+        var conpw = $("#txtconpassword").val();
+        var emailReg = /^([\w-\.]+\u0040([\w-]+\.)+[\w-]{2,4})?$/;
+        var phonepattern = /^[0-9]{10}$/;
+        var passwordpattern = /^[a-z0-9]+$/i;
+        var emailaddressVal = $("#txtemail").val();
+        if (CustomerPhoneNumber == '') {
+            alertify.alert("Please Enter PhoneNumber");
+            $("#txtphone").focus();
+        }
+        else if (!phonepattern.test(CustomerPhoneNumber)) {
+            alertify.alert("Please Enter valid 10 digit Phonenumber");
+            $("#txtphone").focus();
+        }
+        else if (CustomerName == '') {
+            alertify.alert("Please Enter Name");
+            $("#txtname").focus();
+        }
+        else if (CustomerName.length < 5) {
+            alertify.alert("Name must be 5 characters");
+            $("#txtname").focus();
+        }
+        else if (Password == '') {
+            alertify.alert("Please Enter Password");
+            $("#txtpassword").focus();
+        }
+        else if (Password.length < 5) {
+            alertify.alert("Password length must be 5 characters");
+            $("#txtpassword").focus();
+            $("#txtpassword").alphanum();
+        }
+        else if (!passwordpattern.test(Password)) {
+            alertify.alert("Please Enter valid 10 digit Phonenumber");
+            $("#txtphone").focus();
+        }
+        else if (conpw == '') {
+            alertify.alert("Please Enter Confirm Password");
+            $("#txtconpassword").focus();
+        }
+        else if (Password != conpw) {
+            alertify.alert("Passwords do not match.");
+            $("#txtconpassword").focus();
+        }
+        else if (Address == '') {
+            alertify.alert("Please Enter Address");
+            $("#txtdeladdress").focus();
+        }
+        else if (Address.length < 10) {
+            alertify.alert("Address must be 10 characters");
+            $("#txtdeladdress").focus();
+        }
+            //else if (emailaddressVal == '') {
+            //    //alert("Please Enter Email Address");
+            //    $("body").overhang({
+            //        type: "warn",
+            //        message: "Please Enter Email Address.",
+            //        //closeConfirm: "true",
+            //        duration: 5,
+            //        overlay: true
+            //    });
+            //    $("#txtemail").focus();
+            //}
+            //else if (!emailReg.test(emailaddressVal)) {
+            //    $("body").overhang({
+            //        type: "warn",
+            //        message: "Please Enter a valid Email Address.",
+            //        // closeConfirm: "true",
+            //        duration: 5,
+            //        overlay: true
+            //    });
+            //    //alert("Please Enter a valid Email Address");
+            //    $("#txtemail").focus();
+            //}
+
+        else {
+            if (clickedvalue == 'registercustomer') {
+                $.ajax({
+                    url: '/ksreg/Registrationpage',//?CustomerPhoneNumber=' + CustomerPhoneNumber + '&CustomerName=' + CustomerName + '&Password=' + Password + '&Address=' + Address + '&Email=' + Email,
+                    type: 'POST',
+                    data: JSON.stringify({ CustomerPhoneNumber: CustomerPhoneNumber, CustomerName: CustomerName, Password: Password, Address: Address, Email: Email }),
+                    //data: JSON.stringify({ CustomerPhoneNumber, CustomerName, Password, Address, Email }),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function data() {
+                        //if (data == "success") {
+                        //    alert("some error occured");
+                        //    //window.location.href = '/NewOrder/orderview'
+                        //}
+                        //else {
+                        //    alert("Customer Registered successfully");
+                        //    $("#txtphone").val('');
+                        //    $("#txtname").val('');
+                        //    $("#txtpassword").val('');
+                        //    $("#txtdeladdress").val('');
+                        //    $("#txtemail").val('');
+                        //    window.location.reload();
+                        //}
+                        if (data == "unique") {
+                            alertify.alert("Registration fails");
+                        }
+                        else if (data == "Failed") {
+                            alertify.alert("Restaurant is closed at the moment");
+                            window.location.reload();
+                        }
+                        else {
+                            alertify.alert("Customer Registered successfully");
+                            $("#txtphone").val('');
+                            $("#txtname").val('');
+                            $("#txtpassword").val('');
+                            $("#txtdeladdress").val('');
+                            $("#txtemail").val('');
+                            // window.location.reload();
+                            $("#otpopup").css("display", "block");
+                            $("#txtotp").focus();
+                        }
+                    },
+                    error: function (data) {
+                        alertify.alert('Failed.');
+                    }
+                });
+            }
+        }
+    }
+    //forgot password
+    function forgotpw(clickedvalue) {
+        var phone = $("#txtfpw").val();
+        var phonepattern = /^[0-9]{10}$/;
+        if (phone == '') {
+            alertify.alert("Please Enter PhoneNumber");
+            $("#txtfpw").focus();
+        }
+        else if (!phonepattern.test(phone)) {
+            alertify.alert("Please Enter valid 10 digit Phonenumber");
+            $("#txtfpw").focus();
+        }
+        else {
+            if (clickedvalue == 'forgotpw') {
+                $.ajax({
+                    url: '/ksreg/sendpassword',
+                    type: 'POST',
+                    data: JSON.stringify({ phone: phone }),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    //success: function (data) {
+                    //    if (data == 'success') {
+                    //        alert('Password has been successfully sent');
+                    //        window.location.href = '/Home/index';
+                    //    }
+                    //    else if (data == 'failed') {
+                    //        alert('Mobile Number is not Registered');
+                    //    }
+                    //    else {
+                    //        alert('Mobile Number is not Registered');
+                    //    }
+                    //},
+                    //failure: function (data) {
+                    //    alert('Mobile Number is not Registered');
+                    //},
+                    //error: function (data) {
+                    //    alert('error');
+                    //}
+                    success: function data() {
+                        //if (data == "success") {
+                        //    alert("some error occured");
+                        //    //window.location.href = '/NewOrder/orderview'
+                        //}
+                        //else {
+                        //    alert("Password has been successfully sent");
+
+                        //    //window.location.reload();
+                        //}
+                        if (data == "unique") {
+                            alertify.alert("Mobile Number is not Registered");
+                        } else if (data == "exists") {
+                            alertify.alert("Mobile Number is not Registered");
+                        }
+                        else if (data == "Failed") {
+                            alertify.alert("Restaurant is closed at the moment");
+                        }
+                        else {
+                            alertify.alert('Password has been successfully sent!!!.');
+                            //window.location.reload();
+                            //location.href = '/Home/Index';
+                            //alert("Password has been successfully sent");
+                        }
+                    },
+                    error: function (data) {
+                        alertify.alert("Mobile Number is not Registered");
+                        //window.location.reload();
+                    }
+                });
+            }
+        }
+    }
+    function logincustomer(clickedvalue) {
+        var CustomerPhoneNumber = $("#txtphone1").val();
+        var Password = $("#txtpassword1").val();
+        if (clickedvalue == 'logincustomer') {
+            $.ajax({
+                url: '/ksreg/customerlogin',
+                type: 'POST',
+                data: JSON.stringify({ CustomerPhoneNumber: CustomerPhoneNumber, Password: Password }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function data() {
+                    if (data == "exists") {
+                        alertify.alert("Login successful");
+                        //   window.location.href = '/NewOrder/placeorder'
+                    }
+                    else if (data == "unique") {
+                        alertify.alert("login failed");
+                    }
+                },
+                error: function (data)
+                { alertify.alert("Failed!!!"); }
+            });
+        }
+    }
+    //saving customer end
+    //OTP functionality
+    $('#btnotp').on("click", function () {
+        var OTP = $("#txtotp").val();
+        var CustomerPhonenumber = $("#txtphone").val();
+        $.ajax({
+            url: '/ksreg/checkotp',
+            type: 'POST',
+            data: JSON.stringify({ OTP: OTP, CustomerPhonenumber: CustomerPhonenumber }),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                if (data == 'success') {
+                    alertify.alert('OTP verified');
+                    window.location.reload();
+                }
+                else if (data == 'failed') {
+                    alertify.alert('OTP Does not match');
+                }
+                else {
+                    alertify.alert('OTP Does not match Registration Failed.');
+                }
+
+            },
+            failure: function (data) {
+                alertify.alert('Failure');
+            },
+            error: function (data) {
+                alertify.alert('error');
+            }
+        });
+    });
+</script>

@@ -1,0 +1,156 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Orders History ::</title>
+    <link rel="shortcut icon" href="~/production/images/favicon.png">
+    <!-- Bootstrap -->
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <!-- Lato Font -->
+    <link href="~/production/css/latofonts.css" rel="stylesheet">
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <input type="hidden" value="@ViewBag.Name" id="fname">
+    <div class="container body">
+        <div class="main_container">
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="container top-section">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <a href="http://ankapurchicken.com/">
+                                <img src="~/production/images/ankapur_logo.png" alt="Ankapur Logo">
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4 top-phone">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>+91 - 7306544444</span>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="profile">
+                                <img src="~/production/images/usericn.png" alt="Profile Icon">
+                                <span>@ViewBag.Name</span>
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                <ul>
+                                    <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid top-banner">
+                    <div class="top-border"></div>
+                    <div class="banner-image">
+                        <img src="~/production/images/banner-img.jpg" alt="Image Slide" />
+                    </div>
+                </div>
+                <div class="container">
+                    <form>
+                        <div class="row orders-history-page">
+                            <div class="title col-xs-12 col-md-6 col-md-offset-3 padding-left-0 padding-right-0">
+                                <h3>Orders History</h3>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 col-md-offset-3 padding-left-0 padding-right-0 thankyou order-history">
+
+                                <div class="row table-responsive table-hover">
+
+                                    <table class="table">
+                                        <thead class="thead-inverse">
+                                            <tr>
+                                                <th>Order Id</th>
+                                                @*<th>Items</th>*@
+                                                <th>Date</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        @if (ViewBag.orderhistory.Count != 0)
+                                        {
+                                            foreach (var item in ViewBag.orderhistory)
+                                            {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@item.OrderId</td>
+                                                        <td>@item.OrderDate</td>
+                                                        <td>@item.Totalamount</td>
+                                                        @if (@item.Orderstatus == "Order Complete")
+                                                        {
+                                                            <td>@item.Orderstatus<i class="fa fa-check" aria-hidden="true" style="color: #029f36"></i></td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@item.Orderstatus</td>
+                                                        }
+
+                                                    </tr>
+
+                                                </tbody>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p> Order History is Empty</p>
+                                        }
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer>
+            <!--<div class="pull-right"> Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a> </div>
+            <div class="clearfix"></div-->
+        </footer>
+        <!-- /footer content -->
+    </div>
+
+    <!-- jQuery lib -->
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+    <!-- jQuery lib -->
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+                $(this).bind("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+            var fname = $("#fname").val();
+            $("#txtcustname").html(fname);
+            // var darea = $("#delarea").val();
+
+        });
+        $(".top-section .profile").click(function () {
+            $(this).children("ul").toggle();
+        });
+    </script>
+</body>
+</html>

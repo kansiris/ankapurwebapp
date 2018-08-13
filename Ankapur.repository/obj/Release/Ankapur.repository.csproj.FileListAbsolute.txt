@@ -1,0 +1,55 @@
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Release\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Desktop docs 21917\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Desktop docs 21917\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Desktop docs 21917\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Release\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\venkat\Desktop\Desktop docs 21917\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\venkat\Desktop\Desktop docs 21917\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Desktop docs 21917\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\xsisantosh\Desktop\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\xsisantosh\Desktop\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\xsisantosh\Desktop\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\xsisantosh\Desktop\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\xsisantosh\Desktop\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur wo 51017\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Ankapur wo 51017\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur wo 51017\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Ankapur wo 51017\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur wo 51017\Ankapur 29917\Ankapur wo 28917\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\Ankapur web app 121017\Ankapur.repository\bin\Release\Ankapur.repository.dll
+F:\Ankapur web app 121017\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+F:\Ankapur web app 121017\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\Ankapur web app 121017\Ankapur.repository\obj\Release\Ankapur.repository.dll
+F:\Ankapur web app 121017\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur web app 131017\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Ankapur web app 131017\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur web app 131017\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Ankapur web app 131017\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur webapp 241017\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Ankapur webapp 241017\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur webapp 241017\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\Ankapur webapp 241017\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\Ankapur webapp 241017\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\xsisantosh\Desktop\Ankapur 11117\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\xsisantosh\Desktop\Ankapur 11117\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\xsisantosh\Desktop\Ankapur 11117\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\xsisantosh\Desktop\Ankapur 11117\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\xsisantosh\Desktop\Ankapur 11117\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Downloads\Ankapur web app 161117\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Downloads\Ankapur web app 161117\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Downloads\Ankapur web app 161117\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Downloads\Ankapur web app 161117\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\web app 121217\Ankapur.repository\bin\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\web app 121217\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\web app 121217\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\venkat\Desktop\web app 121217\Ankapur.repository\obj\Release\Ankapur.repository.dll
+C:\Users\venkat\Desktop\web app 121217\Ankapur.repository\obj\Release\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\bin\Release\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\bin\Release\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\obj\Release\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\obj\Release\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\obj\Release\Ankapur.repository.pdb

@@ -1,0 +1,481 @@
+﻿@*@model AnkapurWebApplication.Models.TblNewCustomer*@
+@model Tuple<AnkapurWebApplication.Models.TblNewCustomer, AnkapurWebApplication.Models.placeorder>
+@using AnkapurWebApplication.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: User or Guest Login ::</title>
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- Bootstrap -->
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+
+
+    <!-- Custom Theme Style -->
+    <link href="~/Scripts/custom.min.css" rel="stylesheet" />
+
+
+    <!-- Lato Font -->
+
+    <link href="~/production/css/latofonts.css" rel="stylesheet" />
+</head>
+@using AnkapurWebApplication.Content;
+@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    Response.Redirect("/NewOrder/orderview");
+
+}
+<body>
+    <div class="container body">
+        <div class="main_container">
+
+            <div class="container-fluid forgot-popup">
+                <div class="enter-number">
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <text>+ 91</text>
+                        <input type="text" id="txtfpw" class="form-control" placeholder="">
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="button" value="forgotpw" onclick="forgotpw(this.value)"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send SMS</button>
+                    </div>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="container-fluid forgot-popup" id="otpopup">
+                <div class="enter-number">
+                    <div class="form-group">
+                        <label>OTP</label>
+                        <text></text>
+                        <input type="text" id="txtotp" class="form-control" placeholder="" style="padding-left: 10px;">
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="button" id="btnotp"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validate OTP</button>
+                    </div>
+                    @*<i class="fa fa-times" aria-hidden="true"></i>*@
+                </div>
+            </div>
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="container top-section">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <a href="http://ankapurchicken.com/">
+                                <img src="~/production/images/ankapur_logo.png" alt="Ankapur Logo">
+                            </a>
+                        </div>
+                        @*<div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="profile">
+                                <img src="~/production/images/usericn.png" alt="Profile Icon">
+                                <span id="txtcustname"></span>
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                <ul>
+
+                                    <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+
+
+                                </ul>
+                                @*<button class="text-center" type="button" id="btnsignout" onclick="@("window.location.href='" +Url.Action("logoff", "Home") + "'");">Sign Out</button>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+                <div class="container-fluid top-banner">
+                    <div class="top-border"></div>
+                    <div class="banner-image">
+                        <img src="~/production/images/banner-img.jpg" alt="Image Slide" />
+                    </div>
+                </div>
+                <div class="container" id="user-registration">
+                    <!--<div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                        <a href="#"><img src="images/logo.png" alt="Logo" /></a>
+                      </div>
+                    </div>-->
+                    <div class="row login-block">
+                        <h3 class="col-xs-12 col-sm-12 col-md-12 text-center margin-top margin-bottom">Login With</h3>
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-sm-offset-1 col-md-offset-1 right-side">
+
+                            <div class="row sign-up">
+                                <div class="col-xs-12 col-sm-11 col-md-11">
+                                    @using (Html.BeginForm("addguest", "NewOrder", FormMethod.Post))
+                                    {
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            @*<input type="text" class="form-control" placeholder="First Name" />*@
+                                            @Html.EditorFor(model => this.Model.Item1.CustomerFName, new { htmlAttributes = new { @class = "form-control", placeholder = "First name" } })
+                                            @Html.ValidationMessageFor(model => this.Model.Item1.CustomerFName, "", new { @class = "text-danger" })
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            @*<input type="text" class="form-control" placeholder="Last Name" />*@
+                                            @Html.EditorFor(model => this.Model.Item1.Delivery_Addresss, new { htmlAttributes = new { @class = "form-control", placeholder = "Delivery address" } })
+                                            @Html.ValidationMessageFor(model => this.Model.Item1.Delivery_Addresss, "", new { @class = "text-danger" })
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Phone Number</label>
+                                            @*<input type="email" class="form-control" placeholder="Last Name" />*@
+                                            @Html.EditorFor(model => this.Model.Item1.CustPhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone Number" } })
+                                            @Html.ValidationMessageFor(model => this.Model.Item1.CustPhoneNumber, "", new { @class = "text-danger" })
+
+                                        </div>
+
+                                        @*<input type="hidden" value="@ViewBag.Name" id="Restcode">
+                                            <input type="hidden" value="@ViewBag.Name" id="CustomerRequest">*@
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.RestCode, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.restcode })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.delocation, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.delocation })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.customerrequest, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.CustomerResquest })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.DeliverTime, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.DeliverTime })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.Totalamount, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.totalamont })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.cgst, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.cgst })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.sgst, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.sgst1 })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.cartdata, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.cartdata })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.HiddenFor(model => this.Model.Item2.deliveryamount, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.deliveryamount })
+                                        </div>
+
+
+                                        <!--<div class="form-group">
+                                          <label>Password</label>
+                                          <input type="password" class="form-control" placeholder="Password" />
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Mobile</label>
+                                          <input type="text" class="form-control" placeholder="Mobile Number" />
+                                        </div>-->
+                                        <div class="form-group">
+                                            @*<button type="button" class="btn btn-default pull-right" style="background:#313580;color:#fff;">Save</button>*@
+                                            <button type="submit" id="btnSubmit" class="btn btn-default" style="background:#313580;color:#fff;" onclick="savecustomer(this.value)">Guest Login</button>
+
+                                        </div>
+                                    }
+                                </div>
+                                <!--<div class="form-group existing-customer-link"><b>Are you a existing Customer ?</b></div>-->
+                            </div>
+                        </div>
+
+                        <div class="hidden-xs middle">
+                            <div class="text">OR</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-5 col-md-5 left-side">
+
+                            <div class="sign-in-htm">
+
+                                @using (Html.BeginForm("Login", "NewOrder", FormMethod.Post))
+                                {                                     <div class="input-group">
+                                                    <label>Phone Number</label>
+                                                    @*<input id="txtphone1" type="text" class="form-control" name="PhoneNumber" placeholder="">*@
+                                                    @*@Html.EditorFor(model => this.Model.Item1.CustPhoneNumber, new { htmlAttributes = new { @class = "form-control"} })
+                                                        @Html.ValidationMessageFor(model => this.Model.Item1.CustPhoneNumber, "", new { @class = "text-danger" })*@
+                                                    <input class="form-control text-box single-line" id="Item1_CustPhoneNumber" name="Item1.CustPhoneNumber" placeholder="Phone Number" type="text" >
+                                                </div>
+                                                <div class="input-group" style="width:271px;">
+                                                    <label>Password</label>
+                                                    <input class="form-control text-box single-line" id="Item1_Password" name="Item1.Password" placeholder="Password" type="password" >
+                                                    @*<input class="form-control" id="Password" name="Password" type="password" placeholder="Password">*@
+                                                    @*<input id="txtpassword1" type="password" class="form-control" name="password" placeholder="">*@
+                                                    @*@Html.PasswordFor(model => this.Model.Item1.Password, new { @class = "form-control", @id = "txtpassword1" })*@
+                                                    @*@Html.ValidationMessageFor(model => model.Password, "")*@
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.RestCode, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.restcode })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.delocation, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.delocation })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.customerrequest, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.CustomerResquest })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.DeliverTime, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.DeliverTime })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.Totalamount, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.totalamont })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.cgst, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.cgst })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.sgst, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.sgst1 })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.cartdata, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.cartdata })
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(model => this.Model.Item2.deliveryamount, new { htmlAttributes = new { @class = "form-control" }, @Value = ViewBag.deliveryamount })
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <button type="submit" class="btn" value="Log in" id="btnlogin" style="background:#313580;color:#fff;">Sign in</button>
+                                                    <a id="forgotpassword">Forgot Password</a>
+                                                    <a href="http://orders.ankapurchicken.com/"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to home</a>
+
+                                                </div>
+
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+        </div>
+    </div>
+
+  
+    <!-- jQuery lib -->
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+    <!-- jQuery lib -->
+    <!-- Bootstrap -->
+    <script src="~/production/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+            });
+        });
+
+        var url = document.URL;
+        var otp = url.split("otp=")[1];
+        $(document).ready(function () {
+              //if (otp != '1' ) {
+            if (otp === undefined) {}
+            else{
+               // alert(otp);
+                $("#otpopup").css("display", "block");
+                $("#txtotp").focus();
+            }
+        });
+     
+        $('#btnotp').on("click", function () {
+            var OTP = $("#txtotp").val();
+            //   var CustomerPhonenumber = $("#txtphone").val();
+            var CustomerPhonenumber = otp;
+            var RestCode = window.localStorage.getItem("restcode");
+            var DeliverTime = window.localStorage.getItem("DeliverTime");
+            var Totalamount = window.localStorage.getItem("Totalamount");
+            var cgst1 = window.localStorage.getItem("cgstcharges");
+            var deliveryamount = window.localStorage.getItem("deliveryamount");
+            var sgst1 = window.localStorage.getItem("sgstcharges");
+            var delocation = window.localStorage.getItem("delocation");
+            var cartdata = window.localStorage.getItem("finalvalue");
+            var Customername = window.localStorage.getItem("finalvalue");
+            var address = window.localStorage.getItem("finalvalue");
+            // alert(delocation);
+            $("#otpopup").css("display", "none");
+
+
+            $.ajax({
+                url: '/NewOrder/checkotp',
+                type: 'POST',
+                data: JSON.stringify({ OTP: OTP, CustomerPhonenumber: CustomerPhonenumber, RestCode: RestCode, DeliverTime: DeliverTime, Totalamount: Totalamount, cgst1: cgst1, sgst1: sgst1, deliveryamount: deliveryamount, delocation: delocation, cartdata: cartdata }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data == 'success') {
+                         alert("Otp is Verified");
+                        //$("body").overhang({
+                        //    type: "success",
+                        //    message: "OTP verified Proceed with login",
+                        //    // closeConfirm: "true",
+                        //    duration: 5,
+                        //    overlay: true
+                        //});
+                        window.location.href = '/NewOrder/orderview'
+                        //alert('OTP verified');
+                       // window.location.reload();
+                    }
+                    else if (data == 'failed') {
+                       // alert("Failed");
+                        //$("body").overhang({
+                        //    type: "warn",
+                        //    message: "OTP Does not match Registration Failed.",
+                        //    // closeConfirm: "true",
+                        //    duration: 5,
+                        //    overlay: true
+                        //});
+                        alert('OTP Does not match');
+                    }
+                    else {
+                        alert("OTP Does not match Registration Failed.");
+                        //$("body").overhang({
+                        //    type: "warn",
+                        //    message: "OTP Does not match Registration Failed.",
+                        //    // closeConfirm: "true",
+                        //    duration: 5,
+                        //    overlay: true
+                        //});
+                    }
+
+                },
+                failure: function (data) {
+                    alert('Failure');
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
+        });
+        //OTP functionality end
+        $(window).ready(function () {
+            $('#password-1').hideShowPassword({
+                innerToggle: true,
+                touchSupport: Modernizr.touch
+            });
+        });
+
+
+
+
+        //forgot password
+        function forgotpw(clickedvalue) {
+            var phone = $("#txtfpw").val();
+            var phonepattern = /^[0-9]{10}$/;
+            if (phone == '') {
+                // alert("Please Enter PhoneNumber");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter PhoneNumber.",
+                    //closeConfirm: true,
+                    overlay: true,
+                    duration: 5
+                });
+                $("#txtfpw").focus();
+            }
+            else if (!phonepattern.test(phone)) {
+                alert("Please Enter valid 10 digit Phonenumber");
+                //$("body").overhang({
+                //    type: "warn",
+                //    message: "Please Enter valid 10 digit Phonenumber.",
+                //    //closeConfirm: true,
+                //    overlay: true,
+                //    duration: 5
+                //});
+                $("#txtfpw").focus();
+            }
+            else {
+                if (clickedvalue == 'forgotpw') {
+                    $.ajax({
+                        url: '/Home/sendpassword',
+                        type: 'POST',
+                        data: JSON.stringify({ phone: phone }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        //success: function (data) {
+                        //    if (data == 'success') {
+                        //        alert('Password has been successfully sent');
+                        //        window.location.href = '/Home/index';
+                        //    }
+                        //    else if (data == 'failed') {
+                        //        alert('Mobile Number is not Registered');
+                        //    }
+                        //    else {
+                        //        alert('Mobile Number is not Registered');
+                        //    }
+                        //},
+                        //failure: function (data) {
+                        //    alert('Mobile Number is not Registered');
+                        //},
+                        //error: function (data) {
+                        //    alert('error');
+                        //}
+                        success: function data() {
+                            //if (data == "success") {
+                            //    alert("some error occured");
+                            //    //window.location.href = '/NewOrder/orderview'
+                            //}
+                            //else {
+                            //    alert("Password has been successfully sent");
+
+                            //    //window.location.reload();
+                            //}
+                            if (data == "unique") {
+                                alert("Mobile Number is not Registered");
+                            } else if (data == "exists") {
+                                alert("Mobile Number is not Registered");
+                            }
+                            else if (data == "Failed") {
+                                //$("body").overhang({
+                                //    type: "warn",
+                                //    message: "Restaurant is closed at the moment.",
+                                //    //closeConfirm: "true",
+                                //    duration: 5,
+                                //    overlay: true
+                                //});
+                                alert("Restaurant is closed at the moment");
+                            }
+                            else {
+                                //$("body").overhang({
+                                //    type: "success",
+                                //    message: "Password has been successfully sent!!!.",
+                                //    // closeConfirm: "true",
+                                //    overlay: true,
+                                //    duration: 5,
+                                //});
+                                //window.location.reload();
+                                //location.href = '/Home/Index';
+                                alert("Password has been successfully sent");
+                            }
+                        },
+                        error: function (data) {
+                            //$("body").overhang({
+                            //    type: "success",
+                            //    message: "Password has been successfully sent!!!.",
+                            //    closeConfirm: "true",
+                            //    overlay: true
+                            //});
+                            alert("Mobile Number is not Registered");
+                            //window.location.reload();
+                        }
+                    });
+                }
+            }
+        }
+
+        //<!------- Forgot Password ----------->
+        $("#forgotpassword").click(function () {
+            $(".forgot-popup").css("display", "block");
+            $("#otpopup").css("display", "none");
+        });
+        $(".enter-number > i.fa-times").click(function () {
+            $(this).parents(".forgot-popup").css("display", "none");
+        });
+    </script>
+</body>
+</html>

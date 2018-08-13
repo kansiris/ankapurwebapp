@@ -1,0 +1,212 @@
+﻿@model AnkapurWebApplication.Models.TblNewCustomer 
+   
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Thank You ::</title>
+
+    <!-- Bootstrap -->
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <!-- Lato Font -->
+    <link href="~/production/css/latofonts.css" rel="stylesheet">
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+
+</head>
+@using AnkapurWebApplication.Content;
+@*@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    {*@
+<body>
+    <input type="hidden" value="@ViewBag.Name" id="fname">
+    @*<input type="hidden" value="@Session["Deliveryarea"].ToString()" id="delarea">*@
+    <div class="container body">
+        <div class="main_container">
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="container top-section">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <a href="http://ankapurchicken.com/">
+                                <img src="~/production/images/ankapur_logo.png" alt="Ankapur Logo">
+                            </a>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            @*@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                                {*@
+                            <div class="profile">
+                                <img src="~/production/images/usericn.png" alt="Profile Icon">
+                                <span id="txtcustname"></span>
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                <ul>
+                                    <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+                                </ul>
+                                @*<button class="text-center" type="button" id="btnsignout" onclick="@("window.location.href='" +Url.Action("logoff", "Home") + "'");" >Sign Out</button>*@
+                            </div>
+                            
+                            @*  }*@
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid top-banner">
+                    <div class="top-border"></div>
+                    <div class="banner-image">
+                        <img src="~/production/images/banner-img.jpg" alt="Image Slide" />
+                    </div>
+                </div>
+                <div class="container">
+                    <form>
+                        <a href="http://www.ankapurchicken.com"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to home</a>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-md-offset-3 padding-left-0 padding-right-0 thankyou">
+                                <div class="row title">Order Details</div>
+                                <div class="row thankyou-info">
+                                    <div class="row"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                    <div class="row">
+                                        <div class="col-xs-6">OrderId</div>
+                                        <div class="col-xs-6">@ViewBag.orderidtq</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Customer Name</div>
+                                        <div class="col-xs-6">@ViewBag.Name</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Contact Number</div>
+                                        <div class="col-xs-6">@ViewBag.Phone</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Delivery Address</div>
+                                        <div class="col-xs-6">@ViewBag.Address</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Selected delivery area</div>
+                                        <div class="col-xs-6">@ViewBag.sdarea</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Order Date</div>
+                                        <div class="col-xs-6">@ViewBag.dateorder</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Order Time</div>
+                                        <div class="col-xs-6">@ViewBag.ordertime</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Delivery Date and time</div>
+                                        <div class="col-xs-6">@ViewBag.displaytime</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Restaurant Name</div>
+                                        <div class="col-xs-6">Ankapur Chicken</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Telephone</div>
+                                        <div class="col-xs-6">7306544444</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">Address</div>
+                                        <div class="col-xs-6">Anasuya Commercial Complex, 3-6-10 Liberty Road, Himayat Nagar, Hyderabad, Telangana 500029</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6">Payment Type</div>
+                                        <div class="col-xs-6">@ViewBag.paytype</div>
+                                    </div>
+                                    <div class="row amount-total">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-right">Total</div>
+                                            <div class="col-xs-6 text-right">Rs <span>@ViewBag.actamt</span></div>
+                                        </div>
+                                        @*<div class="row">
+                                            <div class="col-xs-6 text-right">CGST(2.5%)</div>
+                                            <div class="col-xs-6 text-right">Rs <span>@ViewBag.CGST</span></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 text-right">SGST(2.5%)</div>
+                                            <div class="col-xs-6 text-right">Rs <span>@ViewBag.SGST</span></div>
+                                        </div>*@
+                                        <div class="row">
+                                            <div class="col-xs-6 text-right">Delivery Charges</div>
+                                            <div class="col-xs-6 text-right">Rs <span>@ViewBag.Deliverycharges</span></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 text-right"><b>Grand Total</b></div>
+                                            <div class="col-xs-6 text-right"><b>Rs <span>@ViewBag.Totalamount</span></b></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6 text-right">( GST Included )</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid popup-area">
+                    <div class="popup">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <h3>Descrption</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right"></div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery lib -->
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+    <!-- jQuery lib -->
+    <!-- Bootstrap -->
+    <script src="~/production/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function (e) {
+                $(this).bind("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+            sessionStorage.setItem('btnorder', 'enable');
+            var fname = $("#fname").val();
+            $("#txtcustname").html(fname);
+           // var darea = $("#delarea").val();
+
+        });
+        //<!---------- profile Drop Down ------------>
+        $(".top-section .profile").click(function () {
+            $(this).children("ul").toggle();
+        });
+        $(window).unload(function () {
+            //sessionStorage.clear();
+            localStorage.clear();
+
+
+        });
+        //<!---------- profile Drop Down ------------>
+    </script>
+</body>
+@*}
+    else
+    {
+        Response.Redirect("/GetRestaurant");
+    }*@
+</html>
+

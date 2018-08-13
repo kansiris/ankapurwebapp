@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AnkapurModelStoreContainer" CdmEntityContainer="AnkapurEntities2">
+    <EntitySetMapping Name="TblNewCustomers">
+      <EntityTypeMapping TypeName="AnkapurModel.TblNewCustomer">
+        <MappingFragment StoreEntitySet="TblNewCustomer">
+          <ScalarProperty Name="CustPhoneNumber" ColumnName="CustPhoneNumber" />
+          <ScalarProperty Name="CustomerFName" ColumnName="CustomerFName" />
+          <ScalarProperty Name="CustomerLName" ColumnName="CustomerLName" />
+          <ScalarProperty Name="Delivery_Addresss" ColumnName="Delivery_Addresss" />
+          <ScalarProperty Name="CustomerTypeId" ColumnName="CustomerTypeId" />
+          <ScalarProperty Name="DeliveryLocationLatitude" ColumnName="DeliveryLocationLatitude" />
+          <ScalarProperty Name="DeliveryLocationLongitude" ColumnName="DeliveryLocationLongitude" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

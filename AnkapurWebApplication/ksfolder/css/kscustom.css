@@ -1,0 +1,48 @@
+﻿body {
+    .login-wrap  .login-html > .login-form > .sign-up-htm {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	transition: all .4s linear;
+	-webkit-transition: all .4s linear;
+	-moz-transition: all .4s linear;}
+.login-wrap  .login-html > .login-form > .sign-in-htm > a{
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+	text-decoration: underline;
+	display: block;
+	margin-top: 20px;
+	cursor: pointer;}
+.login-wrap  .login-html > .login-form > .sign-in-htm > .input-group,
+.login-wrap  .login-html > .login-form > .sign-up-htm > .input-group{
+	display: inline-block;
+	margin-bottom: 20px;
+    width: 100%;}
+.login-wrap  .login-html > .login-form > .sign-in-htm > .input-group > input,
+.login-wrap  .login-html > .login-form > .sign-up-htm > .input-group > input{
+	border-radius: 25px;
+    background: rgba(255,255,255,.3);
+    border: none;
+    /*padding: 20px 15px;*/
+	height: unset;}
+.login-wrap  .login-html > .login-form > .sign-in-htm > .input-group > input::-webkit-input-placeholder,
+.login-wrap  .login-html > .login-form > .sign-up-htm > .input-group > input::-webkit-input-placeholder{
+	color: #fff;}
+.login-wrap  .login-html > .login-form > .sign-in-htm > .input-group > label,
+.login-wrap  .login-html > .login-form > .sign-up-htm > .input-group > label{
+	color: #ccc;}
+.login-wrap  .login-html > .login-form > .sign-in-htm > .input-group > input[type='checkbox'] + label{
+	color: #fff;
+	font-size: 16px;}
+.login-wrap  .login-html > #tab1:checked + label + #tab2 + label + .login-form > .sign-in-htm,
+.login-wrap  .login-html > #tab2:checked + label + .login-form > .sign-up-htm{
+	transform: rotateY(0deg);
+	-webkit-transform: rotateY(0deg);}
+}

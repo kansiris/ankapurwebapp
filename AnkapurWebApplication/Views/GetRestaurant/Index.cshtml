@@ -1,0 +1,152 @@
+﻿@model AnkapurWebApplication.Models.Restaurant
+@using AnkapurWebApplication.Content;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Select Area ::</title>
+    <link rel="shortcut icon" href="~/production/images/favicon.png">
+    <!-- Bootstrap -->
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <!-- Lato Font -->
+    <link href="~/production/css/latofonts.css" rel="stylesheet">
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+</head>
+
+<body class="body-bg">
+    @*<form method="post" id="signin">*@
+    <input type="hidden" value="@ViewBag.Name" id="fname">
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+          <div class="right_col">
+                <div class="container">
+                    <div class="row top-section">
+                       @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                       { <div class="profile" style="background: #fff;padding: 5px 10px;border-radius: 3px;">
+                            <img src="~/production/images/usericn.png" alt="Profile Icon"> 
+                            <span id="txtcustname"></span>
+                             <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            <ul style="top:31px;">
+                                <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                                <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                                <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+
+                            </ul>
+                        </div>
+                       }
+                       else
+                       {
+                        
+                        <div class="profile" style="background: #fff;padding: 5px 10px;border-radius: 3px;" onclick="@("window.location.href='" + Url.Action("Index", "Home") + "'");">
+                            <img src="~/production/images/usericn.png" alt="Profile Icon"> <span>Login</span>  <span id="txtcustname" style="display:none"></span>
+                            
+                    
+                            </div>
+                            }
+                        </div>
+                </div>
+            </div>
+        <div class="container login-wrap area-selection">
+            <div class="logo-icon">
+                <a href="http://www.ankapurchicken.com"> <img src="~/production/images/icon.png" alt="Ankapur"></a>
+            </div>
+            <div class="login-html">
+                <div class="select-area text-center">
+                    <p>Delivery in Hyderabad and Secunderabad<br> Select your nearest Delivery Area</p>
+
+                    <div class="row">
+                        <div class="form-group col-md-10 col-md-offset-1">
+                            @if (ViewBag.Restaurants != null)
+                            {
+                                @Html.DropDownListFor(x => x.restcode, new SelectList(ViewBag.Restaurants, "RestCode", "FullName"), new { @class = "form-control", @id = "rid" })
+                            }
+                            @*<select class="form-control">*@<!--<optgroup label="Select Area">-->
+                            @*<option>Select Area</option>
+                                <option>Himayat Nagar</option>
+                                <option>Kukatpally</option>
+                                <option>A S Rao Nagar</option>
+                                <option>Kondapur</option>*@
+                            <!--</optgroup>-->
+                            @*</select>*@
+
+                        </div>
+                    </div>
+                    <input type="hidden" id="sd" name="sd" value="" />
+                    <div class="form-group order-button">
+                        @*<button  class="btn btn-success" id="btnorder" value="submit" type="submit">Order Now</button>*@
+
+                        <button onclick="window.location.href='/NewOrder/Index'">Order Now</button>
+                    </div>
+                    <a href="http://www.ankapurchicken.com"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to home</a>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- jQuery lib -->
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+    <!-- jQuery lib -->
+    <!-- Bootstrap -->
+    <script src="~/production/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+            });
+        });
+        $(".top-section .profile").click(function () {
+            $(this).children("ul").toggle();
+        });
+        //$(document).ready(function (e) {
+        //    $("#rid").focus();
+        //    var fname = $("#fname").val();
+        //    $("#txtcustname").html(fname);
+        //    //var sd = $('#rid option:selected').text();
+        //    // alert(sd);
+
+        //});
+        document.getElementById('txtcustname').value = 'Name';
+        var fname = $("#fname").val();
+
+       
+        $("#txtcustname").html(fname);
+        $("form").submit(function () {
+            sessionStorage.setItem("btnupdateorder", "disabled");
+            var sd = $('#rid option:selected').text();
+            // alert(sd);
+            $('#sd').val(sd);
+            var sd = $("#sd").val();
+            window.localStorage.setItem("restsd", sd);
+           
+            //location.href = "GetRestaurant/Index";
+        });
+        //$(window).unload(function () {
+        //    var sd = $('#rid option:selected').text();
+        //    alert(sd);
+        //});
+    </script>
+    @*</form>*@
+    @*@if (TempData["srmsg"] != null)
+        {
+            <script>
+                $("body").overhang({
+                    type: "warn",
+                    message: '@TempData["srmsg"]',
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+            </script>
+        }*@
+</body>
+</html>

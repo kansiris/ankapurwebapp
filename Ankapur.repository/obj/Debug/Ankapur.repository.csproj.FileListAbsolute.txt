@@ -1,0 +1,46 @@
+C:\Users\venkat\Documents\Visual Studio 2015\Projects\AnkapurWebApplication\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+C:\Users\venkat\Documents\Visual Studio 2015\Projects\AnkapurWebApplication\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+C:\Users\venkat\Documents\Visual Studio 2015\Projects\AnkapurWebApplication\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+C:\Users\venkat\Documents\Visual Studio 2015\Projects\AnkapurWebApplication\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+C:\Users\venkat\Documents\Visual Studio 2015\Projects\AnkapurWebApplication\Ankapur.repository\obj\Debug\Ankapur.repository.csprojResolveAssemblyReference.cache
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+C:\Users\venkat\Desktop\webapp ankapur\APWAPP\APWAPP\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\Ankapur 11117\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\13-3-2018\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\13-3-2018\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\13-3-2018\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\13-3-2018\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\21-3-2018\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\21-3-2018\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\21-3-2018\Ankapur.repository\obj\Debug\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\sireesh\ankapur\web app\21-3-2018\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\21-3-2018\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\19-4-2018\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\19-4-2018\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\19-4-2018\Ankapur.repository\obj\Debug\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\sireesh\ankapur\web app\19-4-2018\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\19-4-2018\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\23-4-2018\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\23-4-2018\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\23-4-2018\Ankapur.repository\obj\Debug\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\sireesh\ankapur\web app\23-4-2018\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\23-4-2018\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\14-05-2018\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\14-05-2018\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\14-05-2018\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\14-05-2018\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\14-05-2018\Ankapur.repository\obj\Debug\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\sireesh\ankapur\web app\20-06-2018 payment\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\20-06-2018 payment\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\20-06-2018 payment\Ankapur.repository\obj\Debug\Ankapur.repository.csprojResolveAssemblyReference.cache
+F:\sireesh\ankapur\web app\20-06-2018 payment\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\20-06-2018 payment\Ankapur.repository\obj\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\30-07-2018\Ankapur.repository\bin\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\30-07-2018\Ankapur.repository\bin\Debug\Ankapur.repository.pdb
+F:\sireesh\ankapur\web app\30-07-2018\Ankapur.repository\obj\Debug\Ankapur.repository.dll
+F:\sireesh\ankapur\web app\30-07-2018\Ankapur.repository\obj\Debug\Ankapur.repository.pdb

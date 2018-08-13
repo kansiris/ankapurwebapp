@@ -1,0 +1,621 @@
+﻿@model AnkapurWebApplication.Models.TblNewCustomer
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Login ::</title>
+    <link rel="shortcut icon" href="~/production/images/favicon.png">
+    <!-- Bootstrap -->
+    @*<link href="css/bootstrap.min.css" rel="stylesheet">*@
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    @*<link href="css/font-awesome.min.css" rel="stylesheet">*@
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    @*<link href="../build/css/custom.min.css" rel="stylesheet">*@
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <!-- Lato Font -->
+    @*<link href="css/latofonts.css" rel="stylesheet">*@
+    <link href="~/production/css/latofonts.css" rel="stylesheet">
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+</head>
+
+@using AnkapurWebApplication.Content;
+@*@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("/orderview");
+    }
+    else
+    {*@
+<body class="body-bg">
+    @*<form method="post">*@
+    <input type="hidden" value="@ViewBag.Name" id="fname">
+
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {    <input type="hidden" value="@ViewBag.restcode" id="Restcode">
+
+        <div class="container-fluid forgot-popup">
+            <div class="enter-number">
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <text>+ 91</text>
+                    <input type="text" id="txtfpw" class="form-control" placeholder="">
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" type="button" value="forgotpw" onclick="forgotpw(this.value)"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send SMS</button>
+                </div>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+        </div>
+            <div class="container-fluid forgot-popup" id="otpopup">
+                <div class="enter-number">
+                    <div class="form-group">
+                        <label>OTP</label>
+                        <text></text>
+                        <input type="text" id="txtotp" class="form-control" placeholder="" style="padding-left: 10px;">
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="button" id="btnotp"><i class="fa fa-paper-plane" aria-hidden="true"></i>Validate OTP</button>
+                    </div>
+                    @*<i class="fa fa-times" aria-hidden="true"></i>*@
+                </div>
+            </div>
+            <div class="container login-wrap">
+                <div class="logo-icon">
+                    <a href="http://ankapurchicken.com/">
+                        <img src="~/production/images/icon.png" alt="Ankapur">
+                    </a>
+                </div>
+                <div class="login-html">
+                    <input type="radio" id="tab1" name="tab" class="signin" checked>
+                    <label for="tab1" class="tab">Sign in</label>
+                    <input type="radio" id="tab2" name="tab" class="signup">
+                    <label for="tab2" class="tab">Sign up</label>
+                    <div class="login-form">
+                        <div class="sign-in-htm">
+
+                            @Html.AntiForgeryToken()
+                            <div class="input-group">
+                                <label>Phone Number</label>
+                                @*<input id="txtphone1" type="text" class="form-control" name="PhoneNumber" placeholder="">*@
+                                @Html.TextBoxFor(model => model.CustPhoneNumber, new { @class = "form-control", @id = "txtcm" })
+                                @*@Html.ValidationMessageFor(model => model.CustPhoneNumber, "")*@
+                            </div>
+                            <div class="input-group">
+                                <label>Password</label>
+                                @*<input id="txtpassword1" type="password" class="form-control" name="password" placeholder="">*@
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "txtpassword1"})
+                                @*@Html.ValidationMessageFor(model => model.Password, "")*@
+                            </div>
+                            <div class="input-group">
+                                <input type="checkbox" value="" id="keepsign">
+                                <label for="keepsign"><span class="icon"></span>Keep me Signed in</label>
+                            </div>
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-success" value="Log in" id="btnlogin">Sign in</button>
+                            </div>
+                            <a id="forgotpassword">Forgot Password</a>
+                            <a href="http://orders.ankapurchicken.com/"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to home</a>
+
+                        </div>
+                        <div class="sign-up-htm">
+                            @*@using (Html.BeginForm("Registration", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()*@
+                            <div class="input-group">
+                                <label>Phone Number</label>
+                                <input id="txtphone" type="text" class="form-control" name="PhoneNumber" placeholder="" maxlength="10">
+                                @*@Html.EditorFor(model => model.CustPhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone Number" } })
+                                    @Html.ValidationMessageFor(model => model.CustPhoneNumber, "", new { @class = "text-danger" })*@
+                            </div>
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input id="txtname" type="text" class="form-control" name="CustomerName" placeholder="" maxlength="20">
+                                @*@Html.EditorFor(model => model.CustomerFName, new { htmlAttributes = new { @class = "form-control", placeholder = "First name" } })
+                                    @Html.ValidationMessageFor(model => model.CustomerFName, "", new { @class = "text-danger" })*@
+                            </div>
+                            <div class="input-group">
+                                <label>Password</label>
+                                <input id="password-1" type="password" class="form-control" name="password" placeholder="" maxlength="10">
+                                @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })*@
+                            </div>
+                            <div class="input-group">
+                                <label>Confirm Password</label>
+                                <input id="txtconpassword" type="password" class="form-control" name="conformpassword" placeholder="" maxlength="10">
+                                @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })*@
+                            </div>
+                            @*<div class="input-group">
+                                    <label>EMail</label>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "EmailId" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    <input id="txtemail" type="text" class="form-control" name="Email" placeholder="" maxlength="30">
+                                </div>*@
+                                <div class="input-group">
+                                    <label>Address</label>
+                                    @*@Html.EditorFor(model => model.Delivery_Addresss, new { htmlAttributes = new { @class = "form-control", placeholder = "Delivery address" } })
+                                        @Html.ValidationMessageFor(model => model.Delivery_Addresss, "", new { @class = "text-danger" })*@
+                                    <input id="txtdeladdress" type="text" class="form-control" name="Address" placeholder="" maxlength="50">
+                                </div>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-success" value="registercustomer" onclick="savecustomer(this.value)">Register</button>
+                            </div>
+                            @*}*@
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    }
+    @*</form>*@
+    <!-- jQuery lib -->
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+
+    <!-- jQuery lib -->
+    <!-- Bootstrap -->
+    <script src="~/production/js/bootstrap.min.js"></script>
+    <script src="~/production/js/hideShowPassword.js"></script>
+    <script src="~/production/js/modernizr.custom.js"></script>
+    <script type="text/javascript">
+
+        //saving customer start
+        $(document).ready(function () {
+            $("#txtcm").focus();
+            $(window).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+                $(this).bind("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+        });
+
+        function savecustomer(clickedvalue) {
+            var CustomerPhoneNumber = $("#txtphone").val();
+            var CustomerName = $("#txtname").val();
+            var Password = $("#password-1").val();
+            var Address = $("#txtdeladdress").val();
+            var Email = $("#txtemail").val();
+            var conpw = $("#txtconpassword").val();
+            var emailReg = /^([\w-\.]+\u0040([\w-]+\.)+[\w-]{2,4})?$/;
+            var phonepattern = /^[0-9]{10}$/;
+            var passwordpattern = /^[a-z0-9]+$/i;
+            var emailaddressVal = $("#txtemail").val();
+            if (CustomerPhoneNumber == '') {
+                //alert("Please Enter PhoneNumber");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter PhoneNumber.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#txtphone").focus();
+            }
+            else if (!phonepattern.test(CustomerPhoneNumber)) {
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter valid 10 digit Phonenumber.",
+                    // closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                //alert("Please Enter valid 10 digit Phonenumber");
+                $("#txtphone").focus();
+            }
+            else if (CustomerName == '') {
+                //alert("Please Enter Name");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter Full Name.",
+                    // closeConfirm: "true",
+                    duration: 5,
+                    overlay: true,
+
+                });
+                $("#txtname").focus();
+            }
+            else if (CustomerName.length < 5) {
+                //alert("Name must be 5 characters");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Name must be 5 characters.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#txtname").focus();
+            }
+            else if (Password == '') {
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter Password.",
+                    // closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                //alert("Please Enter Password");
+                $("#txtpassword").focus();
+            }
+            else if (Password.length < 5) {
+                // alert("Password length must be 5 characters");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Password length must be 5 characters.",
+                    // closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#txtpassword").focus();
+                $("#txtpassword").alphanum();
+            }
+            else if (!passwordpattern.test(Password)) {
+                $("body").overhang({
+                    type: "warn",
+                    message: "No special characters are allowed for password.",
+                    // closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                //alert("Please Enter valid 10 digit Phonenumber");
+                $("#txtphone").focus();
+            }
+            else if (conpw == '') {
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter Confirm Password.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                // alert("Please Enter Confirm Password");
+                $("#txtconpassword").focus();
+            }
+            else if (Password != conpw) {
+                //alert("Passwords do not match.");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Password does not match.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#txtconpassword").focus();
+            }
+            else if (Address == '') {
+                //alert("Please Enter Address");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter Address.",
+                    // closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#txtdeladdress").focus();
+            }
+            else if (Address.length < 10) {
+                // alert("Address must be 10 characters");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Address must be 10 characters.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#txtdeladdress").focus();
+            }
+            //else if (emailaddressVal == '') {
+            //    //alert("Please Enter Email Address");
+            //    $("body").overhang({
+            //        type: "warn",
+            //        message: "Please Enter Email Address.",
+            //        //closeConfirm: "true",
+            //        duration: 5,
+            //        overlay: true
+            //    });
+            //    $("#txtemail").focus();
+            //}
+            //else if (!emailReg.test(emailaddressVal)) {
+            //    $("body").overhang({
+            //        type: "warn",
+            //        message: "Please Enter a valid Email Address.",
+            //        // closeConfirm: "true",
+            //        duration: 5,
+            //        overlay: true
+            //    });
+            //    //alert("Please Enter a valid Email Address");
+            //    $("#txtemail").focus();
+            //}
+
+            else {
+                if (clickedvalue == 'registercustomer') {
+                    $.ajax({
+                        url: '/Home/Registrationpage',//?CustomerPhoneNumber=' + CustomerPhoneNumber + '&CustomerName=' + CustomerName + '&Password=' + Password + '&Address=' + Address + '&Email=' + Email,
+                        type: 'POST',
+                        data: JSON.stringify({ CustomerPhoneNumber: CustomerPhoneNumber, CustomerName: CustomerName, Password: Password, Address: Address, Email: Email }),
+                        //data: JSON.stringify({ CustomerPhoneNumber, CustomerName, Password, Address, Email }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function data() {
+                            //if (data == "success") {
+                            //    alert("some error occured");
+                            //    //window.location.href = '/NewOrder/orderview'
+                            //}
+                            //else {
+                            //    alert("Customer Registered successfully");
+                            //    $("#txtphone").val('');
+                            //    $("#txtname").val('');
+                            //    $("#txtpassword").val('');
+                            //    $("#txtdeladdress").val('');
+                            //    $("#txtemail").val('');
+                            //    window.location.reload();
+                            //}
+                            if (data == "unique") {
+                                // alert("Registration fails");
+                                $("body").overhang({
+                                    type: "warn",
+                                    message: "Registration fails.",
+                                    //closeConfirm: true,
+                                    duration: 5,
+                                    overlay: true
+                                });
+                            }
+                            else if (data == "Failed") {
+                                $("body").overhang({
+                                    type: "warn",
+                                    message: "Restaurant is closed at the moment.",
+                                    overlay: true,
+                                    //closeConfirm: true,
+                                    duration: 5
+                                });
+                                //alert("Restaurant is closed at the moment");
+                                window.location.reload();
+                            }
+                            else {
+                                //alert("Customer Registered successfully");
+                                //$("body").overhang({
+                                //    type: "success",
+                                //    message: "Customer Registered successfully!",
+                                //    overlay: true,
+                                //   // closeConfirm: true,
+                                //    duration: 5,
+                                //});
+                                // $("#txtphone").val('');
+                                $("#txtname").val('');
+                                $("#txtpassword").val('');
+                                $("#txtdeladdress").val('');
+                                $("#txtemail").val('');
+                                // window.location.reload();
+                                $("#otpopup").css("display", "block");
+                                $("#txtotp").focus();
+                            }
+                        },
+                        error: function (data) {
+                            $("body").overhang({
+                                type: "error",
+                                message: "Failed.",
+                                // closeConfirm: true
+                                duration: 5
+                            });
+                        }
+                    });
+                }
+            }
+        }
+        //forgot password
+        function forgotpw(clickedvalue) {
+            var phone = $("#txtfpw").val();
+            var phonepattern = /^[0-9]{10}$/;
+            if (phone == '') {
+                // alert("Please Enter PhoneNumber");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter PhoneNumber.",
+                    //closeConfirm: true,
+                    overlay: true,
+                    duration: 5
+                });
+                $("#txtfpw").focus();
+            }
+            else if (!phonepattern.test(phone)) {
+                //alert("Please Enter valid 10 digit Phonenumber");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please Enter valid 10 digit Phonenumber.",
+                    //closeConfirm: true,
+                    overlay: true,
+                    duration: 5
+                });
+                $("#txtfpw").focus();
+            }
+            else {
+                if (clickedvalue == 'forgotpw') {
+                    $.ajax({
+                        url: '/Home/sendpassword',
+                        type: 'POST',
+                        data: JSON.stringify({ phone: phone }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        //success: function (data) {
+                        //    if (data == 'success') {
+                        //        alert('Password has been successfully sent');
+                        //        window.location.href = '/Home/index';
+                        //    }
+                        //    else if (data == 'failed') {
+                        //        alert('Mobile Number is not Registered');
+                        //    }
+                        //    else {
+                        //        alert('Mobile Number is not Registered');
+                        //    }
+                        //},
+                        //failure: function (data) {
+                        //    alert('Mobile Number is not Registered');
+                        //},
+                        //error: function (data) {
+                        //    alert('error');
+                        //}
+                        success: function data() {
+                            //if (data == "success") {
+                            //    alert("some error occured");
+                            //    //window.location.href = '/NewOrder/orderview'
+                            //}
+                            //else {
+                            //    alert("Password has been successfully sent");
+
+                            //    //window.location.reload();
+                            //}
+                            if (data == "unique") {
+                                alert("Mobile Number is not Registered");
+                            } else if (data == "exists") {
+                                alert("Mobile Number is not Registered");
+                            }
+                            else if (data == "Failed") {
+                                $("body").overhang({
+                                    type: "warn",
+                                    message: "Restaurant is closed at the moment.",
+                                    //closeConfirm: "true",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                                //alert("Restaurant is closed at the moment");
+                            }
+                            else {
+                                $("body").overhang({
+                                    type: "success",
+                                    message: "Password has been successfully sent!!!.",
+                                    // closeConfirm: "true",
+                                    overlay: true,
+                                    duration: 5,
+                                });
+                                //window.location.reload();
+                                //location.href = '/Home/Index';
+                                //alert("Password has been successfully sent");
+                            }
+                        },
+                        error: function (data) {
+                            //$("body").overhang({
+                            //    type: "success",
+                            //    message: "Password has been successfully sent!!!.",
+                            //    closeConfirm: "true",
+                            //    overlay: true
+                            //});
+                            alert("Mobile Number is not Registered");
+                            //window.location.reload();
+                        }
+                    });
+                }
+            }
+        }
+        function logincustomer(clickedvalue) {
+            var CustomerPhoneNumber = $("#txtphone1").val();
+            var Password = $("#txtpassword1").val();
+            if (clickedvalue == 'logincustomer') {
+                $.ajax({
+                    url: '/Home/customerlogin',
+                    type: 'POST',
+                    data: JSON.stringify({ CustomerPhoneNumber: CustomerPhoneNumber, Password: Password }),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function data() {
+                        if (data == "exists") {
+                            alert("Login successful");
+                         //   window.location.href = '/NewOrder/placeorder'
+                        }
+                        else if (data == "unique") {
+                            alert("login failed");
+                        }
+                    },
+                    error: function (data)
+                    { alert("Failed!!!"); }
+                });
+            }
+        }
+        //saving customer end
+        //OTP functionality
+        $('#btnotp').on("click", function () {
+            var OTP = $("#txtotp").val();
+            var CustomerPhonenumber = $("#txtphone").val();
+            $.ajax({
+                url: '/Home/checkotp',
+                type: 'POST',
+                data: JSON.stringify({ OTP: OTP, CustomerPhonenumber: CustomerPhonenumber }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data == 'success') {
+                        $("body").overhang({
+                            type: "success",
+                            message: "OTP verified Proceed with login",
+                            // closeConfirm: "true",
+                            duration: 5,
+                            overlay: true
+                        });
+                        //alert('OTP verified');
+                        window.location.reload();
+                    }
+                    else if (data == 'failed') {
+                        $("body").overhang({
+                            type: "warn",
+                            message: "OTP Does not match Registration Failed.",
+                            // closeConfirm: "true",
+                            duration: 5,
+                            overlay: true
+                        });
+                        //alert('OTP Does not match');
+                    }
+                    else {
+                        $("body").overhang({
+                            type: "warn",
+                            message: "OTP Does not match Registration Failed.",
+                            // closeConfirm: "true",
+                            duration: 5,
+                            overlay: true
+                        });
+                    }
+
+                },
+                failure: function (data) {
+                    alert('Failure');
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
+        });
+        //OTP functionality end
+        $(window).ready(function () {
+            $('#password-1').hideShowPassword({
+                innerToggle: true,
+                touchSupport: Modernizr.touch
+            });
+        });
+        //<!------- Forgot Password ----------->
+        $("#forgotpassword").click(function () {
+            $(".forgot-popup").css("display", "block");
+            $("#otpopup").css("display", "none");
+        });
+        $(".enter-number > i.fa-times").click(function () {
+            $(this).parents(".forgot-popup").css("display", "none");
+        });
+    </script>
+
+</body>
+@*}*@
+
+
+
+</html>

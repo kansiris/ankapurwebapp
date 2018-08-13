@@ -1,0 +1,63 @@
+﻿<div class="table-responsive">
+
+    <table class="table  table-borderedtable-striped bulk_action" id="vendortable">
+        <thead class="thead-inverse">
+            <tr>
+                <th class="col-md-1">Image</th>
+                <th class="col-md-3">Product Name</th>
+                <th class="col-md-2">Descrption</th>
+                <th class="col-md-1">Quantity</th>
+                <th class="col-md-2">Price</th>
+                <th class="col-md-2">Total</th>
+                <th class="col-md-1">Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Products.Count != 0)
+            {
+                foreach (var item in ViewBag.Products)
+                {
+                    <tr>
+                        <td class="col-md-1 image">
+                            <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Img 1" />
+                        </td>
+                        <td class="col-md-3 product-name"><a href="#" title="vamsi">@item.ProductName</a></td>
+                        <td class="col-md-2 product-variation">
+                            @*<select class="form-control">
+                                <option>1 kg</option>*@
+                            @*<option>100 gm</option>
+                                <option>500 gm</option>*@
+                            @*</select>*@
+                            @item.Quantity
+                        </td>
+                        <td class="col-md-1 quantity-changes">
+                            <div class="input-group spinner">
+                                <label>Qty</label>
+                                <input type="text" class="form-control" id="qty">
+                                <div class="input-group-btn-vertical">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                    <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-md-2 product-price">Rs <span>@item.Price</span></td>
+                        <td class="col-md-2 product-price-total">Rs <span>@item.Price</span></td>
+                        <td class="col-md-1 add-to-cart-table">
+                            <button class="btn" type="button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                            <i class="fa fa-times remove" aria-hidden="true"></i>
+                        </td>
+                        <td class="empty"></td>
+                    </tr>
+
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6"><p>No Records Available</p></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

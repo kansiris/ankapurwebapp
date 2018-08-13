@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AnkapurModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TblNewCustomer">
+    <Key>
+      <PropertyRef Name="CustPhoneNumber" />
+    </Key>
+    <Property Name="CustPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerFName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerLName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Delivery_Addresss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerTypeId" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryLocationLatitude" Type="Double" />
+    <Property Name="DeliveryLocationLongitude" Type="Double" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="AnkapurEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TblNewCustomers" EntityType="Self.TblNewCustomer" />
+  </EntityContainer>
+</Schema>

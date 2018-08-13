@@ -1,0 +1,1260 @@
+﻿@model AnkapurWebApplication.Models.Products
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Ankapur All Products ::</title>
+    <link rel="shortcut icon" href="~/production/images/favicon.png">
+    <!-- Bootstrap -->
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="css/bootstrap.min.css" rel="stylesheet">*@
+    <!-- Font Awesome -->
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="css/font-awesome.min.css" rel="stylesheet">*@
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+    @*<link href="../build/css/custom.min.css" rel="stylesheet">*@
+
+    <!-- Lato Font -->
+    <link href="~/production/css/latofonts.css" rel="stylesheet">
+
+    <!-- Date -->
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+    <link href="~/production/css/jquery.datetimepicker.min.css" rel="stylesheet">
+
+
+
+</head>
+@*@using AnkapurWebApplication.Content;*@
+@*@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+    {*@
+<body>
+    <input type="hidden" value="@ViewBag.Code" id="code" />
+    <input type="hidden" value="@ViewBag.Phone" id="custphone">
+    <input type="hidden" value="@ViewBag.Address" id="custaddress">
+    <input type="hidden" value="@ViewBag.Name" id="fname">
+    <input type="hidden" value="@ViewBag.delocation" id="delocation">
+    <div class="container body">
+        <div class="main_container">
+            <input type="hidden" value="@ViewBag.orderidconfirm" id="oidconfirm">
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="container top-section">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <a href="http://ankapurchicken.com/">
+                                <img src="~/production/images/ankapur_logo.png" alt="Ankapur Logo">
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+{
+                            <div class="profile">
+                                <img src="~/production/images/usericn.png" alt="Profile Icon">
+                                <span id="txtcustname"></span>
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                <ul>
+
+                                    <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                                    <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+
+
+                                </ul>
+                                @*<button class="text-center" type="button" id="btnsignout" onclick="@("window.location.href='" +Url.Action("logoff", "Home") + "'");">Sign Out</button>*@
+                            </div>
+}
+else
+{
+    <div class="profile" style="background: #fff;padding: 5px 10px;border-radius: 3px;" onclick="@("window.location.href='" + Url.Action("Index", "Home") + "'");">
+        <img src="~/production/images/usericn.png" alt="Profile Icon"> <span>Login</span>  <span id="txtcustname" style="display:none"></span>
+
+
+    </div>
+}
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid top-banner">
+                    <div class="top-border"></div>
+                    <div class="banner-image">
+                        <img src="~/production/images/banner-img.jpg" alt="Image Slide" />
+                    </div>
+                </div>
+                <div class="container">
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3 col-md-2">
+                                <div class="row categories">
+                                    <div class="column col-xs-12 sidebar-offcanvas" id="sidebar">
+                                        <ul class="nav" id="menu">
+                                            <!--<li class="title">Categories</li>-->
+                                            @*<li><a id="bf">Break Fast</a></li>*@
+                                            <li><a id="ld">Lunch & Dinner</a></li>
+                                            <li><a id="ad">ADD Ons</a></li>
+                                            <li><a id="pcc">Combos</a></li>
+                                            <li><a id="lb">LunchBox</a></li>
+                                            <!--<li class="leve12"> <a>Category Menu <span class="caret"></span></a>
+                                              <ul class="nav nav-stacked left-submenu">
+                                                <li><a href="#">View One</a></li>
+                                                <li><a href="#">View Two</a></li>
+                                              </ul>
+                                            </li>-->
+                                            @*<li><a>Combos</a></li>
+                                                @*<li class="leve12">
+                                                @*<a>Combos<span class="caret"></span></a>*@
+                                            @*<ul class="nav nav-stacked left-submenu">*@
+                                            @*<li><a id="mcc">Meal Combos</a></li>
+                                                <li><a id="pcc">Party/Special Combos</a></li>*@
+                                            @*<li><a id="acc">Ankapur Special Combo</a></li>*@
+                                            @*</ul>
+                                                </li>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-7">
+                                <div class="row" id="ldtable">
+                                    @if (ViewBag.Products.Count != 0)
+                                    {
+                                        foreach (var item in ViewBag.lunchanddinner)
+                                        {
+                                            <div class="col-xs-12 col-sm-6 col-md-4 displayproduct">
+                                                <div class="label">
+                                                    <img src="~/production/images/label.png" alt="Out of stock">
+                                                </div>
+                                                <div class="well">
+                                                    <i class="fa fa-times remove" aria-hidden="true"></i>
+                                                    <div class="image">
+                                                        <img src="~/Images/menu/@item.Image" class="img-fluid" alt="Image 1" />
+                                                        @*<img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Image 1">*@
+                                                    </div>
+                                                    <div class="img-title">
+                                                        <a class="product-name">@item.ProductName</a>
+                                                        <input type="hidden" value="@item.ProductId.Replace(" ", "")" id="pid" />
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>@item.LongDescription</p>
+                                                        <a href="#">More</a>
+                                                    </div>
+                                                    <div class="empty"></div>
+                                                    <div class="rate-add">
+                                                        <div class="product-price">
+                                                            Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="product-price-total">
+                                                            <p>Total</p> Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 quantity">
+                                                                <div class="input-group spinner">
+                                                                    <label>Qty</label>
+                                                                    <input type="text" class="form-control" value="1" id="cartqty" readonly="readonly">
+                                                                    <div class="input-group-btn-vertical">
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 add-to-cart">
+                                                                <button class="btn btn-primary" type="button">Add <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p>No Records Available</p>
+                                    }
+                                </div>
+                                <div class="row" id="bftable">
+                                    @if (ViewBag.Products.Count != 0)
+                                    {
+                                        foreach (var item in ViewBag.breakfast)
+                                        {
+                                            @*<div class="col-xs-12 col-sm-6 col-md-4 displayproduct">
+                                                    <div class="label">
+                                                        <img src="~/production/images/label.png" alt="Out of stock">
+                                                    </div>
+                                                    <div class="well">
+                                                        <i class="fa fa-times remove" aria-hidden="true"></i>
+                                                        <div class="image">
+                                                            <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Image 1">
+                                                        </div>
+                                                        <div class="img-title">
+                                                            <a class="product-name">@item.ProductName</a>
+                                                            <input type="hidden" value="@item.ProductId.Replace(" ", "")" id="pid" />
+                                                        </div>
+                                                        <div class="description">
+                                                            <p>@item.LongDescription</p>
+                                                            <a href="#">More</a>
+                                                        </div>
+                                                        <div class="empty"></div>
+                                                        <div class="rate-add">
+                                                            <div class="product-price">
+                                                                Rs <span>@item.Price</span>
+                                                            </div>
+                                                            <div class="product-price-total">
+                                                                <p>Total</p> Rs <span>@item.Price</span>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-6 col-sm-6 col-md-6 quantity">
+                                                                    <div class="input-group spinner">
+                                                                        <label>Qty</label>
+                                                                        <input type="text" class="form-control" value="1" id="cartqty" readonly="readonly">
+                                                                        <div class="input-group-btn-vertical">
+                                                                            <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                                                            <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6 col-sm-6 col-md-6 add-to-cart">
+                                                                    <button class="btn btn-primary" type="button">Add <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p>No Records Available</p>
+                                    }
+                                </div>
+                                <div class="row" id="pcctable">
+                                    @if (ViewBag.Products.Count != 0)
+                                    {
+                                        foreach (var item in ViewBag.pccombos)
+                                        {
+                                            <div class="col-xs-12 col-sm-6 col-md-4 displayproduct">
+                                                <div class="label">
+                                                    <img src="~/production/images/label.png" alt="Out of stock">
+                                                </div>
+                                                <div class="well">
+                                                    <i class="fa fa-times remove" aria-hidden="true"></i>
+                                                    <div class="image">
+                                                        <img src="~/Images/menu/@item.Image" class="img-fluid" alt="Image 1" />
+
+                                                        @*<img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Image 1">*@
+                                                    </div>
+                                                    <div class="img-title">
+                                                        <a class="product-name">@item.ProductName</a>
+                                                        <input type="hidden" value="@item.ProductId.Replace(" ", "")" id="pid" />
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>@item.LongDescription</p>
+                                                        <a href="#">More</a>
+                                                    </div>
+                                                    <div class="empty"></div>
+                                                    <div class="rate-add">
+                                                        <div class="product-price">
+                                                            Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="product-price-total">
+                                                            <p>Total</p> Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 quantity">
+                                                                <div class="input-group spinner">
+                                                                    <label>Qty</label>
+                                                                    <input type="text" class="form-control" value="1" id="cartqty" readonly="readonly">
+                                                                    <div class="input-group-btn-vertical">
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 add-to-cart">
+                                                                <button class="btn btn-primary" type="button">Add <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p>No Records Available</p>
+                                    }
+                                </div>
+                                <div class="row" id="adtable">
+                                    @if (ViewBag.Products.Count != 0)
+                                    {
+                                        foreach (var item in ViewBag.addons)
+                                        {
+                                            <div class="col-xs-12 col-sm-6 col-md-4 displayproduct">
+                                                <div class="label">
+                                                    <img src="~/production/images/label.png" alt="Out of stock">
+                                                </div>
+                                                <div class="well">
+                                                    <i class="fa fa-times remove" aria-hidden="true"></i>
+                                                    <div class="image">
+                                                        <img src="~/Images/menu/@item.Image" class="img-fluid" alt="Image 1" />
+
+                                                        @*<img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Image 1">*@
+                                                    </div>
+                                                    <div class="img-title">
+                                                        <a class="product-name">@item.ProductName</a>
+                                                        <input type="hidden" value="@item.ProductId.Replace(" ", "")" id="pid" />
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>@item.LongDescription</p>
+                                                        <a href="#">More</a>
+                                                    </div>
+                                                    <div class="empty"></div>
+                                                    <div class="rate-add">
+                                                        <div class="product-price">
+                                                            Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="product-price-total">
+                                                            <p>Total</p> Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 quantity">
+                                                                <div class="input-group spinner">
+                                                                    <label>Qty</label>
+                                                                    <input type="text" class="form-control" value="1" id="cartqty" readonly="readonly">
+                                                                    <div class="input-group-btn-vertical">
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 add-to-cart">
+                                                                <button class="btn btn-primary" type="button">Add <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p>No Records Available</p>
+                                    }
+                                </div>
+                                <div class="row" id="lbtable">
+                                    @if (ViewBag.Products.Count != 0)
+                                    {
+                                        foreach (var item in ViewBag.lb)
+                                        {
+                                            <div class="col-xs-12 col-sm-6 col-md-4 displayproduct">
+                                                <div class="label">
+                                                    <img src="~/production/images/label.png" alt="Out of stock">
+                                                </div>
+                                                <div class="well">
+                                                    <i class="fa fa-times remove" aria-hidden="true"></i>
+                                                    <div class="image">
+                                                        <img src="~/Images/menu/@item.Image" class="img-fluid" alt="Image 1" />
+
+                                                        @*<img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Image 1">*@
+                                                    </div>
+                                                    <div class="img-title">
+                                                        <a class="product-name">@item.ProductName</a>
+                                                        <input type="hidden" value="@item.ProductId.Replace(" ", "")" id="pid" />
+                                                    </div>
+                                                    <div class="description">
+                                                        <p>@item.LongDescription</p>
+                                                        <a href="#">More</a>
+                                                    </div>
+                                                    <div class="empty"></div>
+                                                    <div class="rate-add">
+                                                        <div class="product-price">
+                                                            Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="product-price-total">
+                                                            <p>Total</p> Rs <span>@item.Price</span>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 quantity">
+                                                                <div class="input-group spinner">
+                                                                    <label>Qty</label>
+                                                                    <input type="text" class="form-control" value="1" id="cartqty" readonly="readonly">
+                                                                    <div class="input-group-btn-vertical">
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                                                        <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-6 col-sm-6 col-md-6 add-to-cart">
+                                                                <button class="btn btn-primary" type="button">Add <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <p>No Records Available</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-0 col-md-3 right-side-bar">
+                                <div class="row checkout">
+
+                                    <div class="col-xs-12 col-md-12 check-title">
+
+                                        <div class="row">
+
+                                            <div class="col-xs-5 col-md-5 title">Your Order</div>
+                                            <div class="col-xs-2 col-md-2 cart-icn">
+                                                <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+                                                <span id="cartquantity">0</span>
+                                            </div>
+                                            <div class="col-xs-5 col-md-5 cart-total">
+                                                Total Rs:<span id="totalamt">000</span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="added-products" id="adpr">
+
+                                        </div>
+                                        <div class="row datentime">
+                                            <h4>Select Date and Time</h4>
+                                            <input type="text" value="" id="datetimepicker" placeholder="Delivery Date Time" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 generateorderbutton" id="dsb">
+                                        <button class="btn btn-primary" type="button" id="btnplaceorder" value="placeorder" onclick="saveorder(this.value)">Place Order</button>
+
+                                    </div>
+                                    <div id="upb">
+                                        <button class="btn btn-primary" type="button" id="btnupdateorder" value="updateorder" onclick="updateorder(this.value)">Update Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid popup-area">
+                    <div class="popup">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <h3>Description</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right"></div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+        <div class="row mobile-cart">
+            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+            <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+        </div>
+    </div>
+    <!-- jQuery lib -->
+    @*<script type="text/javascript" language="javascript" src="js/jquery.min.js"></script>*@
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+    <script type="text/javascript" language="javascript" src="~/production/js/jquery.datetimepicker.full.js"></script>
+    @*<script src="~/production/js/jquery.min.js"></script>*@
+    <!-- jQuery lib -->
+    <!-- Bootstrap -->
+    @*<script src="js/bootstrap.min.js"></script>*@
+    <script src="~/production/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $(this).bind("contextmenu", function (e) {
+        //        e.preventDefault();
+        //    });
+        //});
+        //<script type="text/javascript">
+
+        @*<!------------ Date and Time -------------->*@
+
+
+        //<!------------ Date and Time -------------->
+        @*<!------------ Description POP up -------------->*@
+        $(".description > a").click(function () {
+            $(".popup-area").css("display", "block");
+            var content = $(this).prev("p").clone(true, true);
+            var appendTag = $(".popup-area > .popup");
+            $(".popup-area > .popup > p").remove();
+            $(content).appendTo(appendTag);
+        });
+        $(".popup-area i").click(function () {
+            $(this).parents(".popup-area").css("display", "none");
+        });
+
+        //<!------------ Description POP up -------------->
+        // ldenable on click
+        $("#ld").click(function () {
+            $("#ldtable").css("display", "block");
+            $("#productstable1").css("display", "none");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "none");
+            $("#bftable").css("display", "none");
+            $("#adtable").css("display", "none");
+            $("#lbtable").css("display", "none");
+        });
+        $("#bf").click(function () {
+            $("#bftable").css("display", "block");
+            $("#productstable1").css("display", "none");
+            $("#ldtable").css("display", "none");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "none");
+            $("#adtable").css("display", "none");
+            $("#lbtable").css("display", "none");
+
+        });
+        $("#mcc").click(function () {
+            $("#bftable").css("display", "none");
+            $("#productstable1").css("display", "none");
+            $("#ldtable").css("display", "none");
+            $("#mcctable").css("display", "block");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "none");
+            $("#adtable").css("display", "none");
+            $("#lbtable").css("display", "none");
+
+        });
+        $("#pcc").click(function () {
+            $("#bftable").css("display", "none");
+            $("#productstable1").css("display", "none");
+            $("#ldtable").css("display", "none");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "block");
+            $("#acctable").css("display", "none");
+            $("#adtable").css("display", "none");
+        });
+        $("#acc").click(function () {
+            $("#bftable").css("display", "none");
+            $("#productstable1").css("display", "none");
+            $("#ldtable").css("display", "none");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "block");
+            $("#adtable").css("display", "none");
+            $("#lbtable").css("display", "none");
+
+        });
+        $("#ad").click(function () {
+            $("#bftable").css("display", "none");
+            $("#productstable1").css("display", "none");
+            $("#ldtable").css("display", "none");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "none");
+            $("#adtable").css("display", "block");
+            $("#lbtable").css("display", "none");
+
+        });
+        $("#lb").click(function () {
+            $("#bftable").css("display", "none");
+            $("#productstable1").css("display", "none");
+            $("#ldtable").css("display", "none");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "none");
+            $("#adtable").css("display", "none");
+            $("#lbtable").css("display", "block");
+
+        });
+            //<!------------ Quantity changes / Prices Multiple -------------->
+
+
+        $(document).ready(function (e) {
+
+            $("#upb").css("display", "none");
+            if (sessionStorage.getItem("btnorder") == 'enable') {
+                sessionStorage.clear();
+                //$("#btnupdateorder").attr('disabled', 'disabled');
+                $("#dsb").css("display", "block");
+                $("#upb").css("display", "none");
+               // window.location.reload();
+
+            }
+            if (sessionStorage.getItem("btnupdateorder") == "disabled")
+            {
+                //$("#btnplaceorder").attr('disabled', true);
+                $("#dsb").css("display", "block");
+                $("#upb").css("display", "none");
+               // $("#btnupdateorder").attr('disabled', 'disabled');
+            }
+            if (sessionStorage.getItem("btnplaceorder") == 'disable') {
+
+               // $("#btnplaceorder").attr('disabled', true);
+                //$("#btnupdateorder").attr('disabled', false)
+                $("#dsb").css("display", "none");
+                $("#upb").css("display", "block");
+
+            }
+
+
+            $("div.added-products").html(window.localStorage.getItem("cartdiv")); //Assigning Cart div cookie
+            $("#cartquantity").text(window.localStorage.getItem("cartquantity"));// Assignining cart quantity cookie
+            $("#totalamt").text(window.localStorage.getItem("carttotal"));// Assignining cart total cookie
+            var tableprice, divprice, tabletotal, divtotal;
+            $('.spinner .btn:first-of-type').click(function () {
+                var plus, v;
+                v = parseInt($(this).parent("div").prev("input[type='text']").val());
+                //alert("value of v(Plus) IS " + v);
+                if (v > 0) {
+                    plus = v + 1;
+                    if (plus <= 10) {
+                        $(this).parent("div").prev("input[type='text']").val(plus);
+                        divprice = parseInt($(this).parents(".rate-add").children(".product-price").children("span").text());
+                        divtotal = plus * divprice;
+                        $(this).parents(".rate-add").children(".product-price-total").children("span").remove();
+                        $(this).parents(".rate-add").children(".product-price-total").append("<span>" + divtotal + "</span>");
+                    }
+                    else
+                    {
+                        //alert("Quantity should not be more than 10")
+                        $("body").overhang({
+                            type: "warn",
+                            message: "Quantity should not be more than 10.",
+                            duration:5,
+                           // closeConfirm: "true",
+                            overlay: true
+                        });
+                    }
+                }
+                return vals();
+            });
+            $('.spinner .btn:last-of-type').click(function () {
+                var minus, v;
+                v = parseInt($(this).parent("div").prev("input[type='text']").val());
+                //alert("value of V(Minus) IS " + v);
+                if (v > 1) {
+                    minus = v - 1;
+                    $(this).parent("div").prev("input[type='text']").val(minus);
+                    divprice = parseInt($(this).parents(".rate-add").children(".product-price").children("span").text());
+                    divtotal = minus * divprice;
+                    $(this).parents(".rate-add").children(".product-price-total").children("span").remove();
+                    $(this).parents(".rate-add").children(".product-price-total").append("<span>" + divtotal + "</span>");
+                }
+                return vals();
+            });
+            document.getElementById('txtcustname').value = 'Name';
+            var fname = $("#fname").val();
+                       $("#txtcustname").html(fname);
+            $("#ldtable").css("display", "block");
+            $("#mcctable").css("display", "none");
+            $("#pcctable").css("display", "none");
+            $("#acctable").css("display", "none");
+            $("#productstable1").css("display", "none");
+            $("#adtable").css("display", "none");
+            $("#bftable").css("display", "none");
+            $("#lbtable").css("display", "none");
+
+
+            //$("#datetimepicker").datetimepicker({
+            //    maxDate: "+1w"
+            //});
+            //$("#datetimepicker").datepicker(
+            //    {
+            //        format: 'M d Y h:m a',
+            //        maxDate: '+1w'
+            //    });
+            var today = new Date();
+            //var lastdate = new Date(today.getFullYear(), today.getMonth(), today.getDay() + 28);
+            var mintime = today.setHours(today.getHours() + 1);
+            var ldate = today.setDate(today.getDate() + 5);
+           //alert(ldate);
+           // var maxtime = '9:00 PM';
+            //alert(lastdate);
+            // $('#datetimepicker').attr('readonly', 'readonly');
+            $('#datetimepicker').datetimepicker({
+                dayOfWeekStart: 1,
+                lang: 'en',
+                // minTime: mintime,
+                // minTime: new Date(),
+                minTime: '10:00',
+                startDate: mintime,
+                maxDate: ldate,
+                formatTime: 'g:i a',
+                step: 05,
+                allowTimes: [
+                '10:00', '10:30', '11:00', '11:30','12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00' ],
+
+                //maxTime:maxtime,
+                //format: 'M d Y h:m a',
+                //    useCurrent: false
+                //}).on('dp.show', function () {
+                //    return $(this).data('DateTimePicker').defaultDate(new Date());
+                /*disabledDates:['1986/01/08','1986/01/09','1986/01/10'],*/
+                //defaultDate: '+7d',
+                //ampm: true,
+                //hour: 10,
+                //minute: 30,
+
+            //}).on('change',function () {
+            //    today.setHours(today.getHours() + 6);
+            //    //alert(today);
+            //    $('#datetimepicker').val(today);
+            });
+        });
+
+        //<!------------ Quantity changes / Prices Multiple -------------->
+
+        //<!----------- Quantity Add in Right Bar ---------------->
+        $(".add-to-cart > .btn").click(function () {
+            //var txt = $(this).parents(".rate-add").prev("div.empty");
+            //$(this).parents(".well").clone(true, true).appendTo(".added-products");
+            //alert(window.localStorage.getItem("cartdiv"));
+            var quantity = $(this).closest('div.row').find("div.quantity").children("div.spinner").children("input").val();
+            var productid = $(this).closest('div.well').find("div.img-title").children("input:hidden").val();
+            //window.localStorage.setItem("productid",productid);
+            var productcookie = window.localStorage.getItem("productid"); //product id cookie
+            //var productquantity = window.localStorage.getItem("quantity"); //product quantity cookie
+            //window.localStorage.setItem("cartquantity", $("#cartquantity").text()); // Assignining cart quantity cookie
+            //window.localStorage.setItem("carttotal", $("#totalamt").text()); // Assignining cart total cookie
+
+            window.localStorage.setItem("cartdiv", $("div.added-products").html()); // Assignining cart div cookie
+
+           
+
+            //if (quantity != '' && productid != '') {
+            //    //var finalvalue = window.localStorage.getItem("finalvalue") + "," + productcookie + "-" + productquantity;
+            //    var finalvalue = finalvalue + "," + productid + "-" + quantity;
+            //    //alert(finalvalue);
+            //    if (quantity != '' && productid != '')
+            //        window.localStorage.setItem("finalvalue", finalvalue); //Assigning final value cookie
+            //}
+            //var productcookie = window.localStorage.getItem("productid") + "," + productid;
+          //  alert(productcookie);
+            if (productcookie != null) {
+              //  alert(productcookie.includes(productid));
+                if (productcookie.includes(productid) == false) {
+                    productcookie = productcookie + "," + productid;
+                    //productquantity = productquantity + "," + quantity;
+                   // alert(productcookie);
+                    $(this).parents(".well").clone(true, true).appendTo(".added-products");
+                    if (quantity != '' && productid != '') {
+                        var finalvalue = window.localStorage.getItem("finalvalue") + "," + productid + "-" + quantity;
+                        //finalvalue = finalvalue + "," + productid + "-" + quantity;
+                       // alert(finalvalue);
+                        if (quantity != '' && productid != '') {
+                            window.localStorage.setItem("finalvalue", finalvalue); //Assigning final value cookie
+                            window.localStorage.setItem("productid", productcookie);
+                            //window.localStorage.setItem("quantity", productquantity);
+                        }
+                    }
+                }
+                else {
+                    //alert("Exists");
+                    $("body").overhang({
+                        type: "warn",
+                        message: "Product Already Exists in cart.",
+                        //closeConfirm: "true",
+                        duration: 5,
+                        overlay: true
+                    });
+                }
+            }
+            else {
+               // alert("null value");
+                window.localStorage.setItem("productid", productid);
+                $(this).parents(".well").clone(true, true).appendTo(".added-products");
+                if (quantity != '' && productid != '') {
+                    var finalvalue = window.localStorage.getItem("finalvalue") + "," + productid + "-" + quantity;
+                   // alert(finalvalue);
+                    if (quantity != '' && productid != '') {
+                        window.localStorage.setItem("finalvalue", finalvalue); //Assigning final value cookie
+                        //window.localStorage.setItem("quantity", quantity);
+                    }
+                }
+            }
+
+            //if (array.indexOf(productid)) {
+
+            //    alert("hi");
+            //}
+
+
+
+            return vals();
+
+
+        });
+
+        function vals() {
+            var total, totalquantity = 0, productprice, carttotal = 0;
+            $(".added-products .spinner input[type='text']").each(function () {
+                total = parseInt($(this).val());
+                totalquantity = total + totalquantity;
+            });
+            $(".added-products .product-price-total span").each(function () {
+                productprice = parseInt($(this).text());
+                carttotal = productprice + carttotal;
+            });
+            //alert(carttotal+","+totalquantity);
+            $(".cart-total span").remove();
+            $(".cart-total").append("<span id=totalamt>" + carttotal + "</span>");
+            $(".cart-icn span").remove();
+            $(".cart-icn").append("<span id=cartquantity>" + totalquantity + "</span>");
+            window.localStorage.setItem("cartquantity", totalquantity); // Assignining cart quantity cookie
+            window.localStorage.setItem("carttotal", carttotal); // Assignining cart total cookie
+           
+        }
+        //REmoving items from the cart
+        //$(".remove").click(function () {
+            $(document).on('click', '.remove', function () {
+            var productid = $(this).closest('div.well').find("div.img-title").children("input:hidden").val();
+            var productcookie = window.localStorage.getItem("productid");
+            var productquantity = window.localStorage.getItem("quantity");
+            var productfinal = window.localStorage.getItem("finalvalue");
+            var cartdata = window.localStorage.getItem("finalvalue");
+            //alert(productcookie);
+            //var customcart = cartdata;
+            var pavancart = null; var newproductcookie = null;
+            var updatedproductqty = window.localStorage.getItem("quantity");
+            for (var i = 0, len = cartdata.split(',').length; i < len; i++) {
+                if (cartdata.split(',')[i].split('-')[0] === productid) {
+                    pavancart = pavancart;
+                }
+                else {
+                    if (pavancart != null)
+                        pavancart = pavancart + "," + cartdata.split(',')[i];
+                    else
+                        pavancart = cartdata.split(',')[i];
+                }
+            }
+            for (var i = 0, len = productcookie.split(',').length; i < len; i++) {
+               // alert(productcookie.split(',')[i]);
+                if (productcookie.split(',')[i] === productid) {
+                    newproductcookie = newproductcookie;
+                  //  alert(newproductcookie);
+                }
+                else {
+                    if (newproductcookie != null)
+                        newproductcookie = newproductcookie + "," + productcookie.split(',')[i];
+                    else
+                        newproductcookie = productcookie.split(',')[i];
+
+                    //alert(newproductcookie);
+                }
+            }
+            //alert(newproductcookie);
+            window.localStorage.setItem("productid", newproductcookie);
+            window.localStorage.setItem("finalvalue", pavancart);
+            window.localStorage.setItem("cartdiv", '');
+            $(this).parents("div.well").remove();
+
+            window.localStorage.setItem("cartdiv", $("div.added-products").clone(true, true).html());
+            return vals();
+
+        });
+
+        //REmoving items from the cart end
+        //<!----------- Quantity Add in Right Bar ---------------->
+
+        //<!------------ Left Side Bar ------------------->
+        $("#sidebar li.leve12, #sidebar li").click(function () {
+            $(this).children("a").css({ "font-weight": "700", "color": "#ffff00" });
+            $(this).children("ul.left-submenu").toggle("slow");
+            $(this).nextAll("li").children("a").css({ "font-weight": "normal", "color": "#fff" });
+            $(this).prevAll("li").children("a").css({ "font-weight": "normal", "color": "#fff" });
+            $(this).nextAll("li").children("ul.left-submenu").css("display", "none");
+            $(this).prevAll("li").children("ul.left-submenu").css("display", "none");
+        });
+        $("#sidebar li.leve12 ul.left-submenu li").click(function () {
+            $(this).parent("ul.left-submenu").css("display", "block");
+            $(this).children("a").css("color", "#0288d1");
+            return false;
+        });
+        //<!------------ Left Side Bar ------------------->
+
+        //<!---------- Scroll Anima Right-Side-Bar ------------>
+        $(window).scroll(function () {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop <= 150) {
+                $(".checkout").css("top", "316px");
+            } else if (scrollTop > 150) {
+                $(".checkout").css("top", "150px");
+            }
+        });
+        if (window.matchMedia('(max-width: 980px)').matches) {
+
+            $(window).scroll(function () {
+                $(".checkout").css({ "right": "40px", "top": "auto", "bottom": "10px" });
+            });
+        }
+        //<!---------- Scroll Anima Right-Side-Bar ------------>
+
+        //<!---------- mobile cart ------------>
+        $(".mobile-cart").click(function () {
+            $(this).toggleClass(" rotate");
+            if ($(this).hasClass("rotate")) {
+                //$(".checkout").css({"opacity":"1","top":"20%","right":"40px","z-index":"2"});
+                $(".checkout").css({ "display": "block" });
+                $(this).children("i.fa-shopping-cart").css("display", "none");
+                $(this).children("i.fa-times").css("display", "block");
+            } else {
+                //$(".checkout").css({"opacity":"0","z-index":"-99"});
+                $(".checkout").css({ "display": "none" });
+                $(this).children("i.fa-shopping-cart").css("display", "block");
+                $(this).children("i.fa-times").css("display", "none");
+            }
+        });
+
+        //<!---------- mobile cart ------------>
+        $(".datentime").keydown(function () {
+            $(this).children("input[type='text']").prop("disabled", true);
+        });
+        $(".datentime").mousedown(function () {
+            $(this).children("input[type='text']").prop("disabled", false);
+        });
+        //PLacing order start//
+        function saveorder(clickedvalue) {
+            var d = new Date();
+            var e = formatDate(d);
+            //alert(e);
+            var deliverytime = new Date();
+            deliverytime.setHours(deliverytime.getHours() + 1);
+            var date = new Date().toDateString() + ' ' + deliverytime.toLocaleTimeString();
+            var dpval = $("#datetimepicker").val();
+            customerPhone = $("#custphone").val();
+            RestCode = $("#code").val();
+            CustomerRequest = "spicy";
+            DeliverTime = $("#datetimepicker").val();//date.slice(4);
+            // DeliverTime1 = date.slice(4);
+            Totalamount = $("#totalamt").text();
+           
+          //  alert(Totalamount);
+              var deliveryamount = 50;
+            //  var deliveryamount = 0;
+            var cgstcharges = '0';
+            var sgstcharges = '0';
+           // var cgstcharges = parseFloat(Totalamount).toFixed(2)/ 100 * 2.5;
+            //var cgst1 = Math.ceil(cgstcharges);
+          //  var sgstcharges = parseFloat(Totalamount).toFixed(2)/ 100 * 2.5;
+            //var sgst1 = Math.ceil(sgstcharges);
+            //  Totalamount = parseFloat(Totalamount) + cgstcharges + sgstcharges + parseInt(deliveryamount);
+              Totalamount = parseFloat(Totalamount) +parseInt( deliveryamount);
+        //    alert(Totalamount);
+            var delocation = $("#delocation").val();
+           
+           
+
+            if ($("div.added-products").html() == '' || $("div.added-products").html() == null)
+            {
+                $("body").overhang({
+                    type: "warn",
+                    message: "Your cart is Empty.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+            }
+            else if (dpval == '') {
+                //alert("Please select the delivery time");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please select the delivery time.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#datetimepicker").focus();
+            }
+            else if (DeliverTime <= e) {
+
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please select valid delivery time from " + e + "onwards",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#datetimepicker").focus();
+            }
+
+            else {
+                if (clickedvalue == 'placeorder') {
+                    //alert(window.localStorage.getItem("finalvalue"));
+                    var cartdata = window.localStorage.getItem("finalvalue");
+                    localStorage.removeItem("restcode");
+                    localStorage.removeItem("customerPhone");
+                    localStorage.removeItem("DeliverTime");
+                    localStorage.removeItem("Totalamount");
+                    localStorage.removeItem("cgstcharges");
+                    localStorage.removeItem("sgstcharges");
+                    localStorage.removeItem("deliveryamount");
+                    localStorage.removeItem("delocation");
+                    window.localStorage.setItem("restcode", RestCode);
+                    window.localStorage.setItem("DeliverTime", DeliverTime);
+                    window.localStorage.setItem("Totalamount", Totalamount);
+                    window.localStorage.setItem("cgstcharges", cgstcharges);
+                    window.localStorage.setItem("sgstcharges", sgstcharges);
+                    window.localStorage.setItem("deliveryamount", deliveryamount);
+                    window.localStorage.setItem("delocation", delocation);
+                  
+
+                   // alert(cartdata);
+
+                    $.ajax({
+                        //url: '/NewOrder/addguest?customerPhone=' + customerPhone + '&RestCode=' + RestCode + '& CustomerRequest=' + CustomerRequest + '&DeliverTime=' + DeliverTime + '&Totalamount=' + Totalamount + '&cgst1=' + cgstcharges + '&sgst1=' + sgstcharges + '&deliveryamount=' + deliveryamount + '&cartdata=' + cartdata + '&delocation=' + delocation,
+
+                        url: '/NewOrder/placeorder?customerPhone=' + customerPhone + '&RestCode=' + RestCode + '& CustomerRequest=' + CustomerRequest + '&DeliverTime=' + DeliverTime + '&Totalamount=' + Totalamount + '&cgst1=' + cgstcharges + '&sgst1=' + sgstcharges + '&deliveryamount=' + deliveryamount + '&cartdata=' + cartdata + '&delocation=' + delocation,
+                        type: 'POST',
+                        // data: JSON.stringify({ customerPhone, RestCode, CustomerRequest, DeliverTime, Totalamount,cgst1,sgst1,deliveryamount }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            if (data == "success") {
+                                // alert("Order Placed successfully");
+                                $("body").overhang({
+                                    type: "success",
+                                    message: "Order Placed successfully.",
+                                    //closeConfirm: "true",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                                window.location.href = '/NewOrder/orderview'
+                            }
+                            else {
+                                window.location.href = '/NewOrder/guestorder'
+                                //alert("not updated");
+                            }
+                        },
+                        error: function (data) {
+                            $("body").overhang({
+                                type: "error",
+                                message: "Error in placing the order.",
+                                // closeConfirm: "true",
+                                duration: 5,
+                                overlay: true
+                            });
+                        }
+                    });
+                 }
+            }
+        }
+        //}
+        //placeorder end
+        //updating cart with up button start
+        //$('.fa-caret-up').click(function(){
+        $(document).on('click', '.btn:first-of-type', function () {
+            var productid = $(this).closest('div.well').find("div.img-title").children("input:hidden").val();
+            var quantity1 = $(this).closest('div.row').find("div.quantity").children("div.spinner").children("input").val();
+            var quantity2 = 1;
+            var quantity = parseInt(quantity1) + parseInt(quantity2);
+
+            var cartdata = window.localStorage.getItem("finalvalue");
+            //var customcart = cartdata;
+            //alert(cartdata);
+
+            var pavancart = null;
+            var updatedproductqty = window.localStorage.getItem("quantity");
+            for (var i = 0, len = cartdata.split(',').length; i < len; i++) {
+                if (cartdata.split(',')[i].split('-')[0] === productid) {
+                    pavancart = pavancart + "," + cartdata.split(',')[i].split('-')[0] + "-" + quantity1;
+                }
+                else {
+                    if (pavancart != null)
+                        pavancart = pavancart + "," + cartdata.split(',')[i];
+                    else
+                        pavancart = cartdata.split(',')[i];
+                }
+            }
+          //  alert(pavancart);
+            window.localStorage.setItem("finalvalue", pavancart);
+            window.localStorage.setItem("cartdiv", null);
+            window.localStorage.setItem("cartdiv", $("div.added-products").clone(true,true).html());
+            //alert(window.localStorage.getItem("cartdiv"));
+
+        });
+        //updating cart with up button end
+        // updating cart with down button start
+        //$(".fa-caret-down").click(function () {
+        $(document).on('click', '.btn:last-of-type', function () {
+            var productid = $(this).closest('div.well').find("div.img-title").children("input:hidden").val();
+            var quantity1 = $(this).closest('div.row').find("div.quantity").children("div.spinner").children("input").val();
+            var quantity2 = 1;
+            //alert("hi");
+            var cartdata = window.localStorage.getItem("finalvalue");
+            //var customcart = cartdata;
+            //alert(cartdata);
+
+            var pavancart = null;
+            var updatedproductqty = window.localStorage.getItem("quantity");
+            for (var i = 0, len = cartdata.split(',').length; i < len; i++) {
+                if (cartdata.split(',')[i].split('-')[0] === productid) {
+                    pavancart = pavancart + "," + cartdata.split(',')[i].split('-')[0] + "-" + quantity1;
+                }
+                else {
+                    if (pavancart != null)
+                        pavancart = pavancart + "," + cartdata.split(',')[i];
+                    else
+                        pavancart = cartdata.split(',')[i];
+                }
+            }
+            //alert(pavancart);
+            window.localStorage.setItem("finalvalue", pavancart);
+            window.localStorage.setItem("cartdiv", null);
+            window.localStorage.setItem("cartdiv", $("div.added-products").clone(true, true).html());
+            //alert(window.localStorage.getItem("cartdiv"));
+        });
+        //updating cart with down button end
+        //<!---------- profile Drop Down ------------>
+        $(".top-section .profile").click(function () {
+            $(this).children("ul").toggle();
+        });
+        //<!---------- profile Drop Down ------------>
+            //update order start
+        function updateorder(clickedvalue) {
+            var d = new Date();
+            var e = formatDate(d);
+            var deliverytime = new Date();
+            deliverytime.setHours(deliverytime.getHours() + 1);
+            var date = new Date().toDateString() + ' ' + deliverytime.toLocaleTimeString();
+            var dpval = $("#datetimepicker").val();
+            customerPhone = $("#custphone").val();
+            RestCode = $("#code").val();
+            CustomerRequest = "spicy";
+            DeliverTime = $("#datetimepicker").val();//date.slice(4);
+            // DeliverTime1 = date.slice(4);
+            Totalamount = $("#totalamt").text();
+            var cgstcharges = '0';
+            var sgstcharges = '0';
+            //var cgstcharges = parseFloat(Totalamount).toFixed(2) / 100 * 2.5;
+            //var cgst1 = Math.ceil(cgstcharges);
+            var deliveryamount = 50;
+           // var sgstcharges = parseFloat(Totalamount).toFixed(2) / 100 * 2.5;
+            //var sgst1 = Math.ceil(sgstcharges);
+            //  Totalamount = parseFloat(Totalamount) + cgstcharges + sgstcharges + parseInt(deliveryamount);
+            Totalamount = parseFloat(Totalamount) + parseInt(deliveryamount);
+            var delocation = $("#delocation").val();
+           
+
+            if ($("div.added-products").html() == '' || $("div.added-products").html() == null) {
+                $("body").overhang({
+                    type: "warn",
+                    message: "Your cart is Empty.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+            }
+            else if (dpval == '') {
+                //alert("Please select the delivery time");
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please select the delivery time.",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#datetimepicker").focus();
+            }
+            else if (DeliverTime <= e) {
+
+                $("body").overhang({
+                    type: "warn",
+                    message: "Please select valide the delivery time from " + e + "onwards",
+                    //closeConfirm: "true",
+                    duration: 5,
+                    overlay: true
+                });
+                $("#datetimepicker").focus();
+            }
+            else {
+                if (clickedvalue == 'updateorder') {
+                    //alert(window.localStorage.getItem("finalvalue"));
+                    var cartdata = window.localStorage.getItem("finalvalue");
+                    // alert(cartdata);
+                    $.ajax({
+                        url: '/NewOrder/updateorder?Totalamount=' + Totalamount + '&cgst1=' + cgstcharges + '&sgst1=' + sgstcharges + '&deliveryamount=' + deliveryamount + '&cartdata=' + cartdata + '&DeliverTime=' + DeliverTime ,
+                        type: 'POST',
+                        // data: JSON.stringify({ customerPhone, RestCode, CustomerRequest, DeliverTime, Totalamount,cgst1,sgst1,deliveryamount }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            if (data == "success") {
+                                // alert("Order Placed successfully");
+                                $("body").overhang({
+                                    type: "success",
+                                    message: "Order updated successfully.",
+                                    //closeConfirm: "true",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                                window.location.href = '/NewOrder/orderview'
+                            }
+                            else {
+                                alert("not updated");
+                               // window.location.href = '/NewOrder/orderview'
+                            }
+                        },
+                        error: function (data) {
+                            $("body").overhang({
+                                type: "error",
+                                message: "Error in placing the order.",
+                                // closeConfirm: "true",
+                                duration: 5,
+                                overlay: true
+                            });
+                        }
+                    });
+
+                }
+            }
+        }
+            //update order end
+        //window.onhashchange = function () {
+        //    //window.history.forward
+        //}
+
+
+        function formatDate(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            //var ampm = hours >= 12 ? 'pm' : 'am';
+            //hours = hours % 12;
+            //hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            //var strTime = hours + ':' + minutes + ' ' + ampm;
+            var strTime = (hours + 1) + ':' + minutes;
+            //var month = date.getMonth() + 1;
+            //month = month < 10 ? '0' + month : '' + month
+            // return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+            var dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
+            // 01, 02, 03, ... 10, 11, 12
+            var MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+            //return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + strTime;
+            return dd + "/" + MM + "/" + date.getFullYear() + " " + strTime;
+        }
+    </script>
+
+
+</body>
+@*}
+    else
+    {
+        Response.Redirect("/GetRestaurant");
+    }*@
+</html>

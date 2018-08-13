@@ -1,0 +1,658 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:: Confirm Order ::</title>
+    <link rel="shortcut icon" href="~/production/images/favicon.png">
+    <!-- Bootstrap -->
+    <link href="~/production/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/production/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <!-- Lato Font -->
+    <link href="~/production/css/latofonts.css" rel="stylesheet">
+    <link href="~/production/css/overhang.min.css" rel="stylesheet" />
+    <link href="~/production/css/alertify.css" rel="stylesheet" />
+
+</head>
+@*@using AnkapurWebApplication.Content;
+@if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+{*@
+    <body>
+        <input type="hidden" value="@ViewBag.Name" id="fname">
+        <input type="hidden" value="@ViewBag.orderidconfirm" id="oidconfirm">
+
+        <div class="container body">
+            <div class="main_container">
+
+                <!-- page content -->
+                <div class="right_col" role="main">
+                    <div class="container top-section">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <a href="http://ankapurchicken.com/">
+                                    <img src="~/production/images/ankapur_logo.png" alt="Ankapur Logo">
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="profile">
+                                    <img src="~/production/images/usericn.png" alt="Profile Icon">
+                                    <span id="txtcustname"></span>
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    <ul>
+                                        <li onclick="@("window.location.href='" + Url.Action("updatecustomerprofile", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Account Settings</li>
+                                        <li onclick="@("window.location.href='" + Url.Action("ViewOrder", "NewOrder") + "'");"><i class="fa fa-cog" aria-hidden="true"></i>Order history</li>
+                                        <li onclick="@("window.location.href='" + Url.Action("logoff", "Home") + "'");"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>Sign Out</li>
+                                    </ul>
+                                    @*<button class="text-center" type="button" id="btnsignout" onclick="@("window.location.href='" +Url.Action("logoff", "Home") + "'");">Sign Out</button>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid top-banner">
+                        <div class="top-border"></div>
+                        <div class="banner-image">
+                            <img src="~/production/images/banner-img.jpg" alt="Image Slide" />
+                        </div>
+                    </div>
+                   
+                    <div class="container">
+                        <form>
+                     
+                            <div class="row">
+                                <div class="col-xs-12 col-md-8">
+                                  
+                                    <div class="row address-info">
+                                      
+                                        <div class="row heading">
+                                            <h4>Customer Instructions</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="form-group form-elements">
+                                            <input type="text" id="txtcustinst" class="form-control" placeholder="" maxlength="30">
+                                        </div>
+                                        <div class="row heading">
+                                            <h4>Delivery Information</h4>
+                                            <hr>
+                                            <p>The Order would be delivered at <b>@ViewBag.displaytime </b> to </p>
+                                        </div>
+                                        <div class="row heading">
+                                            <h4>Address</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="row padding-left-0 form-elements">
+                                            <div class="form-group">
+                                                <label>Phone</label>
+                                                <input type="text" class="form-control" placeholder="" value="@ViewBag.Phone" id="custphone">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" placeholder="" value="@ViewBag.Name" id="nameofcust">
+                                            </div>
+                                            <div class="form-group margin-bottom-10">
+                                                <label></label>
+                                                @*<textarea class="form-control" rows="5"></textarea>*@
+                                                @Html.TextArea("custaddress", (string)ViewBag.Address, new { @class = "form-control", @rows = "5", @id = "custaddress", @maxlength = "50" })
+                                            </div>
+                                            <div class="form-group update-address">
+                                                <span id="updateaddress" value="updateaddress"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update Address</span> @*onclick="updateaddress(this.value)"*@
+                                            </div>
+                                            @*<div class="form-group">
+                                                    <label>E-Mail</label>
+                                                    <input type="text" class="form-control" placeholder="" value="@ViewBag.Email" id="emailofcust">
+                                                </div>*@
+                                               <div class="form-group">
+                                                    <label>Area</label>
+                                                    <input type="text" class="form-control" placeholder="" value="@ViewBag.sdarea" id="seldelarea">
+                                                </div>
+                                        </div>
+                                        @*<div class="row heading">
+                                            <h4>Payment Method</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="row payment-type">
+                                            <ul>
+                                                <li class="radio-inline"><input type="radio" checked="checked">Cash on Delivery</li>
+                                            </ul>
+                                        </div>*@
+                                        <!--<div class="row terms">
+                                          <p class="checkbox-inline"><input type="checkbox"> Terms and Conditions</p>
+                                        </div>-->
+                                        @*<div class="row terms">
+                                            <div class="input-group">
+                                                <input type="checkbox" value="" id="keepsign">
+                                                <label for="keepsign"><span class="icon"></span><a href="http://ankapurchicken.com/termsandconditions.php" target="_blank">Terms and Conditions</a></label>
+                                            </div>
+                                        </div>*@
+                                      
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                  
+                                    <div class="row order-info">
+                                        <div class="row title">
+                                            <p class="text-center">Order Details</p>
+                                        </div>
+                                        <div class="row details">
+                                            @foreach (var item in ViewBag.conformorderitems)
+                                            {
+                                                <div class="row items">
+                                                    <div class="row item">
+                                                        @*<img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" alt="Chicken Fry">*@
+                                                        <img src="~/Images/menu/@item.Image" class="img-fluid" alt="Image 1" />
+                                                        <div class="item-details">
+                                                            <p>@item.ProductName</p>
+                                                            <p><span>@item.Quantity1<small>x</small></span><span>@item.Price1</span></p>
+                                                            <p class="text-right">Rs <span>@(item.Price1 * item.Quantity1)</span></p>
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="row item">
+                            <img src="~/production/images/chicken_fry.jpg" alt="Chicken Fry">
+                            <div class="item-details">
+                                <p>Chicken Fry</p>
+                                <p><span>2 <small>x</small></span><span>350</span></p>
+                                <p class="text-right">Rs <span>700</span></p>
+                            </div>
+                        </div>
+                        <div class="row item">
+                            <img src="~/production/images/chicken_fry.jpg" alt="Chicken Fry">
+                            <div class="item-details">
+                                <p>Chicken Fry</p>
+                                <p><span>2 <small>x</small></span><span>350</span></p>
+                                <p class="text-right">Rs <span>700</span></p>
+                            </div>
+                        </div>*@
+                                                </div>
+                                            }
+                                            <hr>
+                                            <div class="row amount-total">
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-right">Total</div>
+                                                    <div class="col-xs-6 text-right">Rs <span>@ViewBag.actamt</span></div>
+                                                </div>
+                                                @*<div class="row">
+                                                    <div class="col-xs-6 text-right">CGST(2.5%)</div>
+                                                    <div class="col-xs-6 text-right">Rs <span>@ViewBag.CGST</span></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-right">SGST(2.5%)</div>
+                                                    <div class="col-xs-6 text-right">Rs <span>@ViewBag.SGST </span></div>
+                                                </div>*@
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-right">Delivery</div>
+                                                    <div class="col-xs-6 text-right">Rs <span>@ViewBag.Deliverycharges</span></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-right"><b>Grand Total</b></div>
+                                                    <div class="col-xs-6 text-right"><b>Rs <span>@ViewBag.Totalamount</span></b></div>
+                                                </div>
+<div class="row">
+    <div class="col-xs-6 text-right">GST Included</div>
+  
+</div>                                                @*<br>
+                    <div class="row">
+                        <div class="col-xs-6 text-right"><b>Promo Code</b></div>
+                        <div class="col-xs-6 text-right"><b><input type="text" id="txtpromo" maxlength="5" style="text-transform:uppercase;"></b></div>
+                    </div>*@
+                                            </div>
+                                        
+                                        <div class="row place-order">
+                                            <h4>Payment Method</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="row place-order">
+                                            @*<p class="text-center">Confirm Order</p>*@
+                                            <button class="text-center" type="button" id="btnconfirmorder" value="confirmorder" onclick="confirmorder(this.value)">Cash On delivery</button>
+                                            @*<button class="text-center" type="button" id="btncancelorder">Cancel Order</button>*@
+
+
+                                        </div>
+                                        
+                                        <div class="row place-order">
+                                            <button id="rzp-button1">Online Payment</button>
+
+                                        </div>
+                                        <div class="row terms">
+                                            <p>
+                                                By selecting the Payment Method you are be accepting our
+                                                <a href="http://ankapurchicken.com/termsandconditions.php" target="_blank">Terms and Conditions</a>
+                                            </p>
+                                            
+                                        </div>
+
+                                        <div class="row place-order">
+                                            <a href="/NewOrder/Index"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Update order</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="container-fluid popup-area">
+                        <div class="popup">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <h3>Descrption</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /page content -->
+                <!-- footer content -->
+                <footer>
+                    <div class="pull-right"></div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+        </div>
+
+        <!-- jQuery lib -->
+        <script type="text/javascript" language="javascript" src="~/production/js/jquery.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="~/production/js/overhang.min.js"></script>
+        <script src="~/production/js/alertify.js"></script>
+        <!-- jQuery lib -->
+        <!-- Bootstrap -->
+        <script src="~/production/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+           
+            $(document).ready(function (e) {
+                if (sessionStorage.getItem("btnorder") == 'enable') {
+                    window.history.back();
+                    $(this).bind("contextmenu", function (e) {
+                        e.preventDefault();
+                    });
+                }
+                $("#txtcustinst").focus();
+                sessionStorage.setItem("btnplaceorder", "disable");
+                //alert(sessionStorage.getItem("btnplaceorder"));
+                var fname = $("#fname").val();
+                $("#txtcustname").html(fname);
+                $("#custphone").attr('readonly', true);
+                $("#nameofcust").attr('readonly', true);
+                $("#emailofcust").attr('readonly', true);
+                $("#seldelarea").attr('readonly', true);
+            });
+            //updating address for confirm order page
+            $('#updateaddress').click(function () {
+                var phone = $("#custphone").val();
+                var address = $("#custaddress").val();
+                if (address == '') {
+                   // alertify.alert("Please Enter the delivery address.");
+
+                    $("body").overhang({
+                        type: "warn",
+                        message: "Please Enter the delivery address.",
+                        //closeConfirm: "false",
+                        duration: 5,
+                        overlay: true
+                    });
+                }
+                else if (address.length < 10) {
+
+                   // alertify.alert("Address should be minimum 10 characters.");
+
+                    $("body").overhang({
+                        type: "warn",
+                        message: "Address should be minimum 10 characters.",
+                        //closeConfirm: "false",
+                        duration: 5,
+                        overlay: true
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: '/NewOrder/updatingaddress',
+                        type: 'POST',
+                        data: JSON.stringify({ phone: phone, address: address }),
+                        datatype: 'json',
+                        contentType: 'application/json',
+                        success: function data() {
+
+                            if (data == "success") {
+                               // alertify.alert("error updating address.");
+
+                                //alert("some error occured");
+                                //window.location.href = '/NewOrder/orderview'
+                                $("body").overhang({
+                                    type: "warn",
+                                    message: "error updating address.",
+                                    //closeConfirm: "true",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                            }
+
+                            else {
+                               // alertify.alert("Address Updated successfully.");
+
+                                $("body").overhang({
+                                    type: "success",
+                                    message: "Address Updated successfully.",
+                                    //closeConfirm: "true",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                                //alert("Addres Updated successfully");
+                                //location.reload();
+                            }
+                        },
+                        error: function (data) {
+                           // alertify.alert("Error in updating address.");
+
+                            $("body").overhang({
+                                type: "error",
+                                message: "Error in updating address.",
+                                // closeConfirm: "true",
+                                duration: 5,
+                                overlay: true
+                            });
+                        }
+
+                    });
+                }
+            });
+            //updating orderstatus and redirecting to thankyoupage
+            function confirmorder(clickedvalue) {
+                var orderid = $("#oidconfirm").val();
+                var custinst = $("#txtcustinst").val();
+                var address = $("#custaddress").val();
+                var statusid = 1;
+                var promo = "ANK5";
+                    //$("#txtpromo").val();
+                if (clickedvalue == 'confirmorder') {
+                    $.ajax({
+                        url: '/NewOrder/updateorderstatus',
+                        type: 'POST',
+                        data: JSON.stringify({ orderid: orderid, statusid: statusid, custinst: custinst, promo: promo }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function data() {
+                            //if ($("#keepsign").prop("checked") == false) {
+                            //    alertify.alert("Please accept terms and conditions");
+                            //    //$("body").overhang({
+                            //    //    type: "warn",
+                            //    //    message: "Please accept terms and conditions.",
+                            //    //    //closeConfirm: "true",
+                            //    //    duration: 5,
+                            //    //    overlay: true
+                            //    //});
+                            //    $("#keepsign").focus();
+                            //}
+
+                             if (address == '') {
+                               // alertify.alert("Please Enter the delivery address.");
+                                $("body").overhang({
+                                    type: "warn",
+                                    message: "Please Enter the delivery address.",
+                                    //closeConfirm: "false",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                            }
+                            //else if (promo == '') {
+                            //    $("body").overhang({
+                            //        type: "warn",
+                            //        message: "Please Enter the Promo Code.",
+                            //        //closeConfirm: "false",
+                            //        duration: 5,
+                            //        overlay: true
+                            //    });
+                            //    $("#txtpromo").focus();
+                            //}
+                            else {
+                              //  alertify.alert("Your Order is Confirmed.");
+
+                                $("body").overhang({
+                                    type: "success",
+                                    message: "Your Order is Confirmed.",
+                                    // closeConfirm: "true",
+                                    duration: 5,
+                                    overlay: true
+                                });
+                                //alert("Your Order has Confirmed");
+                                location.href = '/NewOrder/thankyoupage'
+
+                                //location.reload();
+                            }
+                        },
+                        error: function (data) {
+                           // alertify.alert("Error in placing the order.");
+
+                            $("body").overhang({
+                                type: "error",
+                                message: "Error in placing the order.",
+                                // closeConfirm: "true",
+                                duration: 5,
+                                overlay: true
+                            });
+                        }
+                    });
+                }
+            }
+            //<!---------- profile Drop Down ------------>
+            $(".top-section .profile").click(function () {
+                $(this).children("ul").toggle();
+            });
+
+            //<!---------- profile Drop Down ------------>
+            //
+            //$("#btncancelorder").on('click', function () {
+            //    var orderid = $("#oidconfirm").val();
+            //    var statusid = 8;
+            //    var custinst = "Order Cancelled";
+            //    $.ajax({
+            //        url: '/NewOrder/cancelorder',
+            //        type: 'POST',
+            //        data: JSON.stringify({ orderid: orderid, statusid: statusid, custinst: custinst }),
+            //        dataType: 'json',
+            //        contentType: 'application/json',
+            //        success: function data() {
+            //            $("body").overhang({
+            //                type: "confirm",
+            //                message: "Are You sure to cancel the order.",
+            //                //closeConfirm: "true",
+            //                duration: 5,
+            //                overlay: true,
+            //                callback: function (value) {
+            //                    if (value) {
+            //                        localStorage.clear();
+            //                        window.location.href = '/GetRestaurant/Index';
+            //                    } else {
+            //                        alert("Continue to confirm the order");
+            //                    }
+            //                }
+            //            });
+            //            //localStorage.clear();
+            //            //window.location.href = '/GetRestaurant/Index';
+            //        },
+            //        error: function (data) {
+            //            $("body").overhang({
+            //                type: "error",
+            //                message: "Error in cancelling the order.",
+            //                // closeConfirm: "true",
+            //                duration: 5,
+            //                overlay: true
+            //            });
+            //        }
+            //    });
+            //});
+
+            //validate promocode start
+            //$("#txtpromo").focusout(function () {
+            //    var pcode = $("#txtpromo").val();
+            //    alert(pcode);
+            //    $.ajax({
+            //        url: '/NewOrder/validatepromo',
+            //        type: 'POST',
+            //        data: JSON.stringify({ pcode: pcode }),
+            //        dataType: 'json',
+            //        contentType: 'application/json',
+            //        success: function (data) {
+            //            if (data == 'success') {
+            //                $("body").overhang({
+            //                    type: "success",
+            //                    message: "Valid Promo Code",
+            //                    // closeConfirm: "true",
+            //                    duration: 5,
+            //                    overlay: true
+            //                });
+            //                // alert('Promo verified');
+            //                //window.location.reload();
+            //            }
+            //            else if (data == 'failed') {
+            //                $("body").overhang({
+            //                    type: "warn",
+            //                    message: "Promo Does not match",
+            //                    // closeConfirm: "true",
+            //                    duration: 5,
+            //                    overlay: true
+            //                });
+            //                //alert('Promo Does not match');
+            //            }
+            //            else {
+            //                $("body").overhang({
+            //                    type: "warn",
+            //                    message: "Promo Does not match.",
+            //                    // closeConfirm: "true",
+            //                    duration: 5,
+            //                    overlay: true
+            //                });
+            //                //alert('Promo Does not match');
+            //            }
+
+            //        },
+            //        failure: function (data) {
+            //            alert('Failure');
+            //        },
+            //        error: function (data) {
+            //            $("body").overhang({
+            //                type: "success",
+            //                message: "Valid Promo Code",
+            //                // closeConfirm: "true",
+            //                duration: 5,
+            //                overlay: true
+            //            });
+            //        }
+            //    });
+            //});
+            //validate promocode end
+        </script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+var options = {
+    //  "key": "rzp_live_W09eYwUgy9DAI0",
+    "key": "rzp_test_3OHEkrM9aPMz5u",
+    "amount": "@ViewBag.Totalamount1", // 2000 paise = INR 20
+    "name": "@ViewBag.Name",
+    "description": "Ankapur Chicken",
+    "image": "/production/images/ankapur_logo.png",
+   // "order_id": "@ViewBag.orderid",
+    "handler": function (response){
+        //alert(response.razorpay_payment_id);
+        //alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature);
+        var payment = response.razorpay_payment_id;
+    //    var razorpayment = response.razorpay_order_id;
+    //    var razorsignat = response.razorpay_signature;
+        var orderid = $("#oidconfirm").val();
+        var custinst = $("#txtcustinst").val();
+        var address = $("#custaddress").val();
+       // var statusid = 1;
+        var promo = "ANK5";
+        //$("#txtpromo").val();
+        //if (clickedvalue == 'confirmorder') {
+     
+            $.ajax({
+                url: '/NewOrder/paymentorderstatus?orderid=' + orderid + '&&custinst='+ custinst+ '&&promo=' + promo+ '&&payment='+payment,
+                type: 'POST',
+               // data:orderid,
+                //data: JSON.stringify({ }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                
+                     //   alertify.alert("Your Order is Confirmed.");
+
+                        $("body").overhang({
+                            type: "success",
+                            message: "Your Order is Confirmed.",
+                            // closeConfirm: "true",
+                            duration: 5,
+                            overlay: true
+                        });
+                        //alert("Your Order has Confirmed");
+                        location.href = '/NewOrder/thankyoupage'
+
+                        //location.reload();
+                    
+                },
+                error: function (data) {
+                   // alertify.alert("Error in placing the order.");
+
+                    $("body").overhang({
+                        type: "error",
+                        message: "Error in placing the order.",
+                        // closeConfirm: "true",
+                        duration: 5,
+                        overlay: true
+                    });
+                }
+            });
+        
+
+    },
+    "prefill": {
+        "name": "xxxxx",
+        "email": "xxxx@xxx.xxx"
+    },
+    "notes": {
+        "address": "@ViewBag.Address",
+        "order_id": "@ViewBag.orderid",
+//"transaction_id": "your transaction_id",
+//"Receipt": "your_receipt_id"
+    },
+    "theme": {
+        "color": "#F37254"
+    }
+};
+var rzp1 = new Razorpay(options);
+
+document.getElementById('rzp-button1').onclick = function (e) {
+    if ($("#keepsign").prop("checked") == false) {
+      // alertify.alert("Please accept terms and conditions");
+        $("body").overhang({
+            type: "warn",
+            message: "Please accept terms and conditions.",
+            //closeConfirm: "true",
+            duration: 10,
+            overlay: true
+        });
+        $("#keepsign").focus();
+    }
+    else {
+        rzp1.open();
+        e.preventDefault();
+    }
+}
+        </script>
+    </body>
+@*}    
+    
+    else
+        {
+            Response.Redirect("/NewOrder/guestorder");
+        }*@
+</html>

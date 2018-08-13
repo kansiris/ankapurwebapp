@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AnkapurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TblNewCustomer">
+    <Key>
+      <PropertyRef Name="CustPhoneNumber" />
+    </Key>
+    <Property Name="CustPhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerFName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustomerLName" Type="varchar" MaxLength="20" />
+    <Property Name="Billing_Address" Type="nvarchar(max)" />
+    <Property Name="Delivery_Addresss" Type="nvarchar(max)" />
+    <Property Name="Land_Mark" Type="nvarchar" MaxLength="250" />
+    <Property Name="Mobile1" Type="nvarchar" MaxLength="20" />
+    <Property Name="Mobile2" Type="nvarchar" MaxLength="20" />
+    <Property Name="CustomerTypeId" Type="int" />
+    <Property Name="DeliveryLocationLatitude" Type="float" />
+    <Property Name="DeliveryLocationLongitude" Type="float" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="OTP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityContainer Name="AnkapurModelStoreContainer">
+    <EntitySet Name="TblNewCustomer" EntityType="Self.TblNewCustomer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
